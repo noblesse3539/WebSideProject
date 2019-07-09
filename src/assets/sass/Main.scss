@@ -1,0 +1,19 @@
+#root, #main {
+    height: 100%; 
+}
+#root {
+    overflow: hidden;
+}
+#main {
+    width: 100%;
+    background: {
+        image: url("https://source.unsplash.com/random/1600x900");
+        size: cover;
+        position: center;
+        repeat: no-repeat;
+    }
+    filter: blur(5px);
+    transform: scale(1.1);
+    backface-visibility: visible;
+}
+  

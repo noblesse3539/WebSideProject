@@ -3,23 +3,5 @@ body {
   margin: 0;
   font-family: 'Noto Sans KR', sans-serif; }
 
-.header {
-  background: #5c7cfa;
-  display: table;
-  table-layout: fixed;
-  width: 100%; }
-
-.item {
-  text-align: center;
-  padding: 1rem 0;
-  display: table-cell;
-  color: white;
-  text-decoration: none;
-  font-size: 1.1rem; }
-
-.item:hover {
-  background: #748ffc; }
-
-.item:active {
-  background: white;
-  color: #5c7cfa; }
+.header-wrapper {
+  height: 77px; }

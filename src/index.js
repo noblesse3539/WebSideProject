@@ -9,11 +9,13 @@ import Markdown from './routes/Markdown';
 import rbd from './components/rbd';
 import Header from './components/Header';
 
+import './assets/css/Main.css';
+
 class App extends React.Component {
     render() {
         return (
             <Router>
-                <div>
+                <div id="main">
                     <Header/>
                     <Route exact path="/" component={Home}/>
                     <Route path="/about" component={About}/>
