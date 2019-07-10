@@ -1,7 +1,10 @@
 #root, #main {
     height: 100%; 
 }
-#root {
+.main-wrapper {
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
     overflow: hidden;
 }
 .main-bg {
@@ -16,7 +19,6 @@
     }
     filter: blur(5px);
     transform: scale(1.1);
-    // backface-visibility: visible;
 }
 #main {
     position: relative;
@@ -24,9 +26,12 @@
     width: 100%;
 }
 a {
-    color: white;
-    &:hover {
-        text-decoration: none;
-        color: rgba(255, 255, 255, 0.76);
+    color: white !important;
+    &:hover, &:visited, &:active, &:link {
+        text-decoration: none !important;
+        color: rgba(255, 255, 255, 0.76) !important;
+    }
+    &:focus {
+        outline: none !important;
     }
 }

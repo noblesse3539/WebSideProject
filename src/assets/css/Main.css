@@ -1,7 +1,10 @@
 #root, #main {
   height: 100%; }
 
-#root {
+.main-wrapper {
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
   overflow: hidden; }
 
 .main-bg {
@@ -21,7 +24,9 @@
   width: 100%; }
 
 a {
-  color: white; }
-  a:hover {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.76); }
+  color: white !important; }
+  a:hover, a:visited, a:active, a:link {
+    text-decoration: none !important;
+    color: rgba(255, 255, 255, 0.76) !important; }
+  a:focus {
+    outline: none !important; }
