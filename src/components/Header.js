@@ -9,7 +9,7 @@ export default class Header extends React.Component {
                 <div className="header-flex">
                     <div className="left">
                         <div className="logo">
-                            WEBENGERS
+                            <Link to="/" className="item">WEBENGERS</Link>
                         </div>
                     </div>
                     <div className="right">
