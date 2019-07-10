@@ -22,7 +22,7 @@ class GitGuide extends React.Component {
             }
         ]
     }
-
+    
     render() {
         const { basic } = this.state;
 
