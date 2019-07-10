@@ -4,4 +4,20 @@ body {
   font-family: 'Noto Sans KR', sans-serif; }
 
 .header-wrapper {
-  height: 77px; }
+  height: 90px;
+  width: 100%;
+  padding: 10px 40px; }
+
+.header-flex {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  color: white; }
+
+.left, .right {
+  display: flex; }
+
+.item {
+  margin: 0 20px; }

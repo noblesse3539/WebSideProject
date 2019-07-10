@@ -16,14 +16,16 @@ class App extends React.Component {
     render() {
         return (
             <Router>
+                <div class="main-bg"></div>
                 <div id="main">
                     <Header/>
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/rbd" component={rbd}/>
-                    <Route path="/markdown" component={Markdown}/>
-                    <Route path="/gitguide" component={GitGuide}/>
+                    <Content />
                 </div>
+                <Route exact path="/" component={Home}/>
+                <Route path="/about" component={About}/>
+                <Route path="/rbd" component={rbd}/>
+                <Route path="/markdown" component={Markdown}/>
+                <Route path="/gitguide" component={GitGuide}/>
             </Router>
         )
     }

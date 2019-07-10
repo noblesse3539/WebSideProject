@@ -4,7 +4,9 @@
 #root {
     overflow: hidden;
 }
-#main {
+.main-bg {
+    position: absolute;
+    height: 100%;
     width: 100%;
     background: {
         image: url("https://source.unsplash.com/random/1600x900");
@@ -16,4 +18,15 @@
     transform: scale(1.1);
     backface-visibility: visible;
 }
-  
+#main {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+a {
+    color: white;
+    &:hover {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.76);
+    }
+}
