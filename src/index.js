@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Home from './routes/Home';
-import About from './routes/About';
+import AboutUs from './routes/AboutUs';
 import Markdown from './routes/Markdown';
 import GitGuide from './routes/GitGuide';
 
@@ -20,7 +20,7 @@ class App extends React.Component {
                     <div id="main">
                         <Header/>
                         <Route exact path="/" component={Home}/>
-                        <Route path="/about" component={About}/>
+                        <Route path="/aboutus" component={AboutUs}/>
                         <Route path="/rbd" component={rbd}/>
                         <Route path="/markdown" component={Markdown}/>
                         <Route path="/gitguide" component={GitGuide}/>
