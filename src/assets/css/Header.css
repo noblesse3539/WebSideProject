@@ -1,13 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap");
 body {
   margin: 0;
-  font-family: 'Noto Sans KR', sans-serif; }
+  font-family: 'Noto Sans KR', sans-serif;
+}
 
 .header-wrapper {
   height: 90px;
   width: 100%;
   padding: 10px 40px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .header-flex {
   display: flex;
@@ -16,13 +18,17 @@ body {
   justify-content: space-between;
   align-items: center;
   color: white;
-  font-size: 16px; }
+  font-size: 16px;
+}
 
 .left, .right {
-  display: flex; }
+  display: flex;
+}
 
 .logo {
-  font-size: 20px; }
+  font-size: 20px;
+}
 
 .item {
-  margin: 0 20px; }
+  margin: 0 20px;
+}
