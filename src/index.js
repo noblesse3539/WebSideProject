@@ -19,13 +19,12 @@ class App extends React.Component {
                     <div class="main-bg"></div>
                     <div id="main">
                         <Header/>
-                        <Content />
+                        <Route exact path="/" component={Home}/>
+                        <Route path="/about" component={About}/>
+                        <Route path="/rbd" component={rbd}/>
+                        <Route path="/markdown" component={Markdown}/>
+                        <Route path="/gitguide" component={GitGuide}/>
                     </div>
-                    <Route exact path="/" component={Home}/>
-                    <Route path="/about" component={About}/>
-                    <Route path="/rbd" component={rbd}/>
-                    <Route path="/markdown" component={Markdown}/>
-                    <Route path="/gitguide" component={GitGuide}/>
                 </div>
             </Router>
         )
