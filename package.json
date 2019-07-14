@@ -4,11 +4,14 @@
   "private": true,
   "dependencies": {
     "@atlaskit/css-reset": "^5.0.2",
+    "immutable": "^4.0.0-rc.12",
     "react": "^16.8.6",
     "react-beautiful-dnd": "^11.0.4",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "slate": "^0.47.4",
+    "slate-react": "^0.22.4",
     "styled-components": "^4.3.2"
   },
   "scripts": {
