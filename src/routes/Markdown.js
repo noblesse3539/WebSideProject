@@ -38,7 +38,6 @@ export default class Markdown extends React.Component {
                     onChange={this.handleChange}
                 />
                 <div id="show">{this.state.text}</div>
-                
                 <MarkDownSlate/>
             </div>
         );
