@@ -1,4 +1,5 @@
 import React from 'react';
+import MarkDownSlate from '../components/useslate/MarkDownSlate'
 
 export default class Markdown extends React.Component {
     state = {
@@ -24,7 +25,12 @@ export default class Markdown extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: "end",
+                }}
+            >
                 <h1>Markdown Editor</h1>
                 
                 <textarea
@@ -32,7 +38,7 @@ export default class Markdown extends React.Component {
                     onChange={this.handleChange}
                 />
                 <div id="show">{this.state.text}</div>
-            
+                <MarkDownSlate/>
             </div>
         );
     }
