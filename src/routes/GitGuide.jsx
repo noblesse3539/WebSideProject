@@ -4,6 +4,7 @@ import update from 'immutability-helper';
 import Question from '../components/gitguide/Question';
 import Quiz from '../components/gitguide/Quiz';
 import quizQuestions from '../components/gitguide/api/quizQuestions';
+import Result from '../components/gitguide/Result';
 
 class GitGuide extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class GitGuide extends React.Component {
 
         this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
     }
-    
+
 
     // 초기 렌더링이 발생하기 직전에 클라이언트와 서버 양측에 한 번 적용된다.
     componentWillMount() {
@@ -59,13 +60,13 @@ class GitGuide extends React.Component {
         if (this.state.questionId < quizQuestions.length) {
             setTimeout(() => this.setNextQuestion(), 300);
         } else {
-            setTimeout(() => this.setResults(), 300);
+            setTimeout(() => this.setResults(this.getResults()), 300);
         }
     }
 
     setUserAnswer(answer) {
         const updatedAnswersCount = update(this.state.answersCount, {
-            [answer]: {$apply: (currentValue) => currentValue + 1}
+            [answer]: { $apply: (currentValue) => currentValue + 1 }
         });
         this.setState({
             answersCount: updatedAnswersCount,
@@ -76,8 +77,8 @@ class GitGuide extends React.Component {
     // handleAnswerSelected의 결과값에 따라
     // 다음 질문을 보여주기 위해 state를 변경한다.
     setNextQuestion() {
-        const counter = this.state.counter+1;
-        const questionId = this.state.questionId+1;
+        const counter = this.state.counter + 1;
+        const questionId = this.state.questionId + 1;
         this.setState({
             counter: counter,
             questionId: questionId,
@@ -85,6 +86,28 @@ class GitGuide extends React.Component {
             answerOptions: quizQuestions[counter].answers,
             answer: '',
         });
+    }
+
+    // handleAnswerSelected의 결과값에 따라
+    getResults() {
+        const answersCount = this.state.answersCount;
+        const answersCountKeys = Object.keys(answersCount);
+        const answersCountValues = answersCountKeys.map((key) => answersCount[key]);
+        const maxAnswerCount = Math.max.apply(null, answersCountValues);
+        return answersCountKeys.filter((key) => answersCount[key] === maxAnswerCount);
+    }
+
+    // getResults()의 배열 형태의 결과값을 받아서, 배열이 하나의 value를 가지고 있는지 확인한다. 
+    setResults(result) {
+        if (result.length === 1) {
+            this.setState({
+                result: result[0]
+            });
+        } else {
+            this.setState({
+                result: 'Undetermined'
+            });
+        }
     }
 
     // state = {
@@ -108,20 +131,33 @@ class GitGuide extends React.Component {
     //     ]
     // }
 
+    renderQuiz() {
+        return (
+            <Quiz
+                answer={this.state.answer}
+                answerOptions={this.state.answerOptions}
+                qustionId={this.state.questionId}
+                question={this.state.question}
+                questionTotal={quizQuestions.length}
+                onAnswerSelected={this.handleAnswerSelected}
+            />
+
+        )
+    }
+
+    renderResult() {
+        return (
+            <Result quizResult={this.state.result} />
+        )
+    }
+
     render() {
         return (
             <div className="App">
                 <div className="App-header">
                     <h2>Quiz</h2>
                 </div>
-                <Quiz
-                    answer={this.state.answer}
-                    answerOptions={this.state.answerOptions}
-                    qustionId={this.state.questionId}
-                    question={this.state.question}
-                    questionTotal={quizQuestions.length}
-                    onAnswerSelected={this.handleAnswerSelected}
-                />
+                {this.state.result ? this.renderResult() : this.renderQuiz()}
             </div>
         )
     }
