@@ -1,12 +1,20 @@
 import React from 'react';
 
-import CourseName from './CourseName';
+import Question from './Question';
+import Answer from './Answer';
+
+import './css/Quiz.css';
 
 class Quiz extends React.Component {
     render() {
         return (
-            <div className="quiz">
-                <CourseName name="Basic" />
+            <div className="Quiz">
+                <div className="Quiz__Question">
+                    <Question />
+                </div>
+                <div className="Quiz__Answer">
+                    <Answer />
+                </div>
             </div>
         )
     }
