@@ -1,5 +1,5 @@
 import React from 'react';
-import ChapterList from '../components/gitguide/ChapterList';
+import Question from '../components/gitguide/Question';
 
 class GitGuide extends React.Component {
     state = {
@@ -28,7 +28,7 @@ class GitGuide extends React.Component {
 
         return (
             <div class="wrapper">
-                <ChapterList basic={basic} />
+                <Question content="What is your favorite food?" />
             </div>
         )
     }
