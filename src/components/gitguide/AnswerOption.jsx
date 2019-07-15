@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function AnswerOption(props) {
     return (
@@ -16,6 +17,7 @@ function AnswerOption(props) {
                 className="radioCustomLabel"
                 htmlFor={props.answerType}
             >
+                {props.answerContent}
             </label>
         </li>
     );
