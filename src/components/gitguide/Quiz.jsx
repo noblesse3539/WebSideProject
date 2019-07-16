@@ -16,7 +16,7 @@ class Quiz extends React.Component {
                     <Answer />
                 </div>
             </div>
-        )
+        );
     }
 }
 
