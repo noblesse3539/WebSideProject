@@ -1,16 +1,25 @@
 import React from 'react';
 
-import AnswerInput from './AnswerInput';
+import AnswerInputForm from './AnswerInputForm';
 import AnswerSolution from './AnswerSolution';
 import AnswerTerminal from './AnswerTerminal';
 
 class Answer extends React.Component {
+    state = {
+        userAnswer: '',
+    }
+
+    handleUserAnswer = (userAnswer) => {
+        this.state.userAnswer = userAnswer;
+        
+    }
+
     render() {
         return (
             <div className="Answer">
-                <AnswerInput />
-                <AnswerSolution solution="git init" />
-                <AnswerTerminal terminal="$ blahblah" />
+                <AnswerInputForm
+                    onInputAnswer={this.handleUserAnswer}
+                />
             </div>
         );
     }

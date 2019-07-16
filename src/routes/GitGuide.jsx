@@ -30,7 +30,9 @@ class GitGuide extends React.Component {
     render() {
         return (
             <div className="GitGuide">
-                <Quiz />
+                <Quiz
+                    basicCourse={this.basicCourse}
+                />
             </div>
         );
     }
