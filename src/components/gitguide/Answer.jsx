@@ -5,20 +5,12 @@ import AnswerSolution from './AnswerSolution';
 import AnswerTerminal from './AnswerTerminal';
 
 class Answer extends React.Component {
-    state = {
-        userAnswer: '',
-    }
-
-    handleUserAnswer = (userAnswer) => {
-        this.state.userAnswer = userAnswer;
-        
-    }
-
     render() {
         return (
             <div className="Answer">
                 <AnswerInputForm
-                    onInputAnswer={this.handleUserAnswer}
+                    // onInputAnswer={this.handleUserAnswer}
+                    solution="git init"
                 />
             </div>
         );

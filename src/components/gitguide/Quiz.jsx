@@ -11,10 +11,6 @@ class Quiz extends React.Component {
         renderType: 0
     }
 
-    handleTrueOrFalse = (renderType) => {
-        
-    }
-
     render() {
         return (
             <div className="Quiz">
@@ -25,6 +21,11 @@ class Quiz extends React.Component {
                     <Answer
                         solution="git init"
                     />
+                </div>
+                <div className="Quiz__Next">
+                    <button type="submit">
+                        다음문제
+                    </button>
                 </div>
             </div>
         );

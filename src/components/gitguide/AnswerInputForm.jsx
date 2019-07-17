@@ -3,39 +3,56 @@ import React from 'react';
 export default class AnswerInputForm extends React.Component {
     state = {
         answer: '',
+        score: 0,
     }
 
-    // Input 태그의 내용이 수정될 때마다 실행되는 함수
-    // 입력되는 값을 state 값에 실시간으로 동기화시킨다.
     handleChange = (e) => {
         this.setState({
             answer: e.target.value
         })
     }
 
-    // 이용자가 Form 태그를 통해 정답을 제출했을 때 실행되는 함수
-    // 페이지 리로딩을 중지시키고, 사용자가 입력한 state값을 부모 컴포넌트에게 전달한다.
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.onInputAnswer(this.state.answer);
+        if (this.state.answer === this.props.solution) {
+            this.state.score = 1;
+        }
+        if (this.state.answer !== this.props.solution) {
+            this.state.score = 2;
+        }
         this.setState({
             answer: '',
         })
     }
 
     render() {
-        return (
-            <div className="AnswerInput">
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        placeholder="정답을 입력하세요."
-                        name="answer"
-                        value={this.state.answer}
-                        onChange={this.handleChange}
-                    />
-                    <button type="submit">제출</button>
-                </form>
-            </div>
-        );
+        // 답을 제출하지 않은 경우
+        if (this.state.score === 0) {
+            return (
+                <div className="AnswerInput">
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            placeholder="정답을 입력하세요."
+                            name="answer"
+                            value={this.state.answer}
+                            onChange={this.handleChange}
+                        />
+                        <button type="submit">제출</button>
+                    </form>
+                </div>
+            );
+        }
+        // 제출한 답이 정답인 경우
+        if (this.state.score === 1) {
+            return (
+                <h2>합!격!</h2>
+            )
+        }
+        // 제출한 답이 오답인 경우
+        if (this.state.score === 2) {
+            return (
+                <h2>오!답!</h2>
+            )
+        }
     }
 }
