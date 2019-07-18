@@ -5,7 +5,7 @@ const { Provider, Consumer:QuestionsConsumer } = Context;
 
 class QuestionsProvider extends Component {
     state = {
-        basic = [
+        basic: [
             {
                 topic: "새로운 저장소 만들기",
                 question: "프로젝트 폴더를 생성하여 Git으로 관리하려고 합니다. 새로 생성한 폴더를 Git 저장소로 초기화하는 명령어를 입력하세요.",
@@ -24,8 +24,8 @@ class QuestionsProvider extends Component {
     }
 
     render() {
-        const { basicQuestions } = this.basic;
-        const value = { basicQuestions }
+        const { state } = this;
+        const value = { state }
         return (
             <Provider value={value}>
                 {this.props.children}
