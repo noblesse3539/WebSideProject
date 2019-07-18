@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Question from './Question';
 import AnswerInputForm from './AnswerInputForm';
+import { QuestionsConsumer } from './contexts/questions';
 
 class Quiz extends Component {
     render() {
@@ -12,6 +13,8 @@ class Quiz extends Component {
                 </div>
                 <div className="Quiz__AnswerInputForm">
                     <AnswerInputForm />
+                </div>
+                <div className="Quiz__Solution">
                 </div>
             </div>
         );

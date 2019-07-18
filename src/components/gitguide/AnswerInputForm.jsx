@@ -14,8 +14,6 @@ function AnswerInputForm() {
             <form>
                 <input onChange={onChange} value={answer} />
             </form>
-            <p>prev: {answer}</p>
-            <p>next: {setAnswer}</p>
         </div>
     )
 }

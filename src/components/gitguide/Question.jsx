@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import QuestionDetail from './QuestionDetail';
 import { QuestionsConsumer } from './contexts/questions';
 
 class Question extends Component {
@@ -6,10 +7,11 @@ class Question extends Component {
         return (
             <QuestionsConsumer>
                 {
-                    ({ state }) => (
+                    ({ state, actions }) => (
                         <div>
-                            <h4>{state.basic[0].topic}</h4>
-                            <p>{state.basic[0].question}</p>
+                            <button onClick={actions.prevQuestion}>이전문제</button>
+                            <button onClick={actions.nextQuestion}>다음문제</button>
+                            <QuestionDetail questionId={state.count} />
                         </div>
                     )
                 }
