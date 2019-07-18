@@ -9,10 +9,16 @@ function AnswerInputForm() {
         setAnswer(e.target.value);
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
+
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <input onChange={onChange} value={answer} />
+                <button type="submit">제출</button>
             </form>
         </div>
     )
