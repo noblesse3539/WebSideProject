@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa|Fredericka+the+Great|Julius+Sans+One|Montserrat|Quicksand&display=swap');
 .body-wrapper {
-    padding: 20px 40px;
+    padding: 0;
 }
-.introduce-init {
+.section {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 50px 0;
+    height: 100vh;
     .logo {
         height: 250px;
         width: 250px;
@@ -16,4 +16,14 @@
         flex-direction: column;
         font-family: 'Julius Sans One', sans-serif;
     }
+}
+.sec-1 {
+    height: calc(100vh - 90px);
+    background: rgba(255,255,255,0.5);
+}
+.sec-2 {
+    background: rgba(255,255,125,0.5);
+}
+.sec-3 {
+    background: rgba(20,255,255,0.5);
 }

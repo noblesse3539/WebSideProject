@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../assets/css/CardView.css';
+import '../assets/sass/CardView.scss';
 
 export default class CardView extends React.Component {
     render() {
