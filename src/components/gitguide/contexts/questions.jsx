@@ -5,7 +5,8 @@ const { Provider, Consumer:QuestionsConsumer } = Context;
 
 class QuestionsProvider extends Component {
     state = {
-        count: 0,
+        count: 0,           // 사용자가 보고있는 문제 인덱스
+        userAnswer: '',     // 사용자가 제출한 답
         basic: [
             {
                 questionId: 1,
@@ -13,7 +14,8 @@ class QuestionsProvider extends Component {
                 question: "프로젝트 폴더를 생성하여 Git으로 관리하려고 합니다. 새로 생성한 폴더를 Git 저장소로 초기화하는 명령어를 입력하세요.",
                 answer: "git init",
                 hint: "git ____",
-                terminalResult: ""
+                terminalResult: "",
+                score: 0,
             },
             {
                 questionId: 2,
@@ -21,17 +23,20 @@ class QuestionsProvider extends Component {
                 question: "친구 창오와 함께 프로젝트를 진행하려고 합니다. 창오의 스켈레톤 코드가 담긴 원격 저장소를 받아오려고 합니다. 다음과 같은 주소를 가진 저장소를 나의 컴퓨터 환경에 받아오기 위한 명령어를 입력하세요.",
                 answer: "git clone https://github.com/yooco0618/GitGuide.git",
                 hint: "___ _____ https://github.com/yooco0618/GitGuide.git",
-                terminalResult: ""
+                terminalResult: "",
+                score: 0,
             },
         ]
     }
 
     actions = {
+        // 이전문제로 돌아가기
         prevQuestion: () => {
             this.setState(
                 ({ count }) => ({ count: count - 1})
             )
         },
+        // 다음문제로 넘어가기
         nextQuestion: () => {
             this.setState(
                 ({ count }) => ({ count: count + 1})

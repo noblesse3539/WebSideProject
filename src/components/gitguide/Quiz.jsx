@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 import Question from './Question';
-import AnswerInputForm from './AnswerInputForm';
+import Answer from './Answer';
 import { QuestionsConsumer } from './contexts/questions';
 
 class Quiz extends Component {
+    state = {
+        score: 0,
+    }
+
     render() {
         return (
-            <div className="Quiz">
-                <h2>Quiz</h2>
-                <div className="Quiz__Question">
-                    <Question />
-                </div>
-                <div className="Quiz__AnswerInputForm">
-                    <AnswerInputForm />
-                </div>
-                <div className="Quiz__Solution">
-                </div>
-            </div>
+            <QuestionsConsumer>
+                {
+                    ({ state, actions }) => (
+                        <div className="Quiz">
+                            <div className="Quiz__Question">
+                                <Question />
+                            </div>
+                            <div className="Quiz__Answer">
+                                <Answer />
+                            </div>
+                        </div>
+                    )
+                }
+            </QuestionsConsumer>
         );
     }
 }
