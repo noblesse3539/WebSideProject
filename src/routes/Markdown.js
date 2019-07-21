@@ -33,10 +33,6 @@ export default class Markdown extends React.Component {
             >
                 <h1>Markdown Editor</h1>
                 
-                <textarea
-                    value={this.state.text}
-                    onChange={this.handleChange}
-                />
                 <div id="show">{this.state.text}</div>
                 <MarkDownSlate/>
             </div>
