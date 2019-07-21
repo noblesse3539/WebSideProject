@@ -85,6 +85,7 @@ class MarkdownShortcuts extends Component {
         const native = window.getSelection()
         const range = native.getRangeAt(0)
         const rect = range.getBoundingClientRect()
+        menu.style.opacity = 1
         menu.style.top = `${rect.top + window.pageYOffset - menu.offsetHeight}px`
 
         menu.style.left = `${rect.left + window.pageXOffset - menu.offsetWidth / 2 + rect.width / 2}px`
@@ -319,12 +320,11 @@ class MarkdownShortcuts extends Component {
     onDropOrPaste = (event, editor, next) => {
         const target = editor.findEventRange(event)
         if (!target && event.type === 'drop') return next()
-        if (target.isBackward === null) return // 이미지 속으로 드롭 에러 방지
+        if (target && target.isBackward === null) return // 이미지 속으로 드롭 에러 방지
         const transfer = getEventTransfer(event)
         const { type, text, files } = transfer
         
         if (type === 'files') {
-            console.log('files')
             for (const file of files) {
                 const reader = new FileReader()
                 const [mime] = file.type.split('/')
@@ -339,12 +339,12 @@ class MarkdownShortcuts extends Component {
             return
         }
         if (type === 'text') {
-            console.log('text')
             if (!isUrl(text)) return next()
             if (!isImage(text)) return next()
             editor.command(insertImage, text, target)
             return
         }
+        
 
         next()
     }
@@ -438,7 +438,6 @@ function insertImage(editor, src, target) {
     if (target) {
         editor.select(target)
     }
-    // console.log(target)
 
     editor.insertBlock({
         type: 'image',
@@ -458,11 +457,10 @@ const schema= {
         normalize: (editor, { code, node, child }) => {
             switch (code) {
                 case 'last_child_type_invalid': {
-                    console.log('얍얍얍')
                     const paragraph = Block.create('paragraph')
                     return editor.insertNodeByKey(node.key, node.nodes.size, paragraph)
                 }
-
+                default: return
             }
         },
     },
@@ -508,7 +506,7 @@ const HoverMenu = React.forwardRef(({ editor }, ref) => {
                 left: -10000px;
                 margin-top: -6px;
                 opacity: 0;
-                background-color: #222;
+                background-color: rgba(100, 100, 100, 1);
                 border-radius: 4px;
                 transition: opacity 0.75s;
             `}
@@ -516,7 +514,7 @@ const HoverMenu = React.forwardRef(({ editor }, ref) => {
             <MarkButton editor={editor} type="bold" icon="format_bold" />
             <MarkButton editor={editor} type="italic" icon="format_italic" />
             <MarkButton editor={editor} type="underlined" icon="format_underlined" />
-            <MarkButton editor={editor} type="code" icon="format_code" />
+            <MarkButton editor={editor} type="code" icon="code" />
         </Menu>,
         root
     )

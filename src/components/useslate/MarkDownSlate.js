@@ -12,7 +12,8 @@ export default class MarkDownSlate extends Component {
             <div
                 style={{
                     background:'rgba(255, 255, 255, 0.7)',
-                    marginLeft: '20px'
+                    marginLeft: '20px',
+                    minWidth: '400px'
                 }}
             >
                 <MarkdownShortcuts></MarkdownShortcuts>
