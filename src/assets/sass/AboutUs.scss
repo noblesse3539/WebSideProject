@@ -1,4 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Comfortaa|Fredericka+the+Great|Julius+Sans+One|Montserrat|Quicksand&display=swap');
+html {
+    scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+body {
+    // AboutUs만 적용되게 수정해야 함
+    overflow: hidden;
+}
 .body-wrapper {
     padding: 0;
 }
