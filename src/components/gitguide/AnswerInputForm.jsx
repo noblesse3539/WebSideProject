@@ -1,27 +1,59 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
+import { QuestionsConsumer } from './contexts/questions';
+import Answer from './Answer';
 
-function AnswerInputForm() {
-    // answer: 상태 유지 값
-    // setAnswer: answer를 갱신하는 함수
-    const [answer, setAnswer] = useState('');
-
-    const onChange = (e) => {
-        setAnswer(e.target.value);
+class AnswerInputForm extends Component {
+    state = {
+        answer: ''
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // state 초기값 설정
+    componentDidMount() {
+        this.setState({
+            answer: this.props.value
+        })
     }
 
+    render() {
+        // input 입력값 감지하여 state에 반영
+        const handleChange = (event) => {
+            this.setState({
+                answer: event.target.value
+            })
+        }
 
-    return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input onChange={onChange} value={answer} />
-                <button type="submit">제출</button>
-            </form>
-        </div>
-    )
+        const handleSubmit = (event) => {
+            event.preventDefault();
+            this.props.setUserAnswer(this.state.answer);
+            this.setState({ answer: '' })
+        }
+        return (
+            <>
+                <form onSubmit={handleSubmit}>
+                    <input onChange={handleChange} value={this.state.answer} />
+                    <button type="submit">제출</button>
+                </form>
+                <p>State 데이터 확인: {this.state.answer}</p>
+            </>
+        )
+    }
 }
 
-export default AnswerInputForm;
+const AnswerInputFormContainer = () => (
+    <QuestionsConsumer>
+        {
+            ({ state, actions }) => (
+                <>
+                    <AnswerInputForm
+                        value={state.userAnswer}
+                        setUserAnswer={actions.setUserAnswer}
+                    />
+                    <p>Context 데이터 확인: {state.userAnswer}</p>
+                </>
+            )
+        }
+    </QuestionsConsumer>
+)
+
+export default AnswerInputFormContainer;
+

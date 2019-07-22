@@ -4,21 +4,34 @@ import AnswerInputForm from './AnswerInputForm';
 import { QuestionsConsumer } from './contexts/questions';
 
 class Answer extends Component {
-    state = {
-        score: 0        // 0: 제출안함, 1: 맞았음, 2: 틀렸음
-    }
-
     render() {
-        return (
-            <QuestionsConsumer>
-                {
-                    ({ state }) => (
-                        <AnswerInputForm />
-                    )
-                }
-            </QuestionsConsumer>
-        )
+        if (this.props.score === 0) {
+            return (
+                <>
+                    <AnswerInputForm />
+                </>
+            );
+        }
+        if (this.props.score === 1) {
+            return (
+                <>
+                    <p>정답입니다 :)</p>
+                </>
+            );
+        }
     }
 }
 
-export default Answer;
+const AnswerContainer = () => (
+    <QuestionsConsumer>
+        {
+            ({ state, actions }) => (
+                <Answer
+                    score={state.basic[state.count].score}
+                />
+            )
+        }
+    </QuestionsConsumer>
+)
+
+export default AnswerContainer;

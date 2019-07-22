@@ -5,7 +5,7 @@ const { Provider, Consumer:QuestionsConsumer } = Context;
 
 class QuestionsProvider extends Component {
     state = {
-        count: 0,           // 사용자가 보고있는 문제 인덱스
+        count: 0,           // 사용자가 보고있는 문제의 인덱스값
         userAnswer: '',     // 사용자가 제출한 답
         basic: [
             {
@@ -35,12 +35,33 @@ class QuestionsProvider extends Component {
             this.setState(
                 ({ count }) => ({ count: count - 1})
             )
+            this.setState({
+                userAnswer: ''
+            })
         },
         // 다음문제로 넘어가기
         nextQuestion: () => {
             this.setState(
                 ({ count }) => ({ count: count + 1})
             )
+            this.setState({
+                userAnswer: ''
+            })
+        },
+        setUserAnswer: (answer) => {
+            if (answer === this.state.basic[this.state.count].answer) {
+                this.setState(
+                    // (state.basic) => ({
+
+                    // })
+                );
+            }
+
+            // 사용자가 제출한 정답 데이터 저장하기
+            this.setState({
+                userAnswer: answer
+            });
+            
         }
     }
 
