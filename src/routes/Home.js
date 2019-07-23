@@ -1,5 +1,6 @@
 import React from 'react';
 import TopNav from 'components/navbar/TopNav'
+import Footer from 'components/footer/Footer'
 
 import './Home.scss'
 
@@ -28,6 +29,7 @@ export default class Home extends React.Component {
                 <div className="course-button">
                     <button className="button">COURSES</button>
                 </div>
+                <Footer/>
             </div>
         );
     }
