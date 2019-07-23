@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+#root {
+    height: 100%; 
+}
+.body-wrapper {
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+a {
+    color: rgba(0, 0, 0, 0.75) !important;
+    &:hover , &:active{
+        text-decoration: none !important;
+        color: rgba(0, 0, 0, 1) !important;
+    }
+    &:focus {
+        outline: none !important;
+    }
+}

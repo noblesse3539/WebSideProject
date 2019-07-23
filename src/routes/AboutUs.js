@@ -1,7 +1,7 @@
 import React from 'react';
 import VerticalNav from 'components/aboutus/VerticalNav'
 import logo from 'assets/img/logo3.png'
-import 'assets/sass/AboutUs.scss'
+import './AboutUs.scss'
 
 var timer
 export default class AboutUs extends React.Component {
