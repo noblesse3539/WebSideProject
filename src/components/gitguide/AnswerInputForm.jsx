@@ -22,10 +22,14 @@ class AnswerInputForm extends Component {
             })
         }
 
+        // 사용자가 입력값을 제출하면 Context의 메소드를 호출하여
+        // 사용자 입력값을 Context로 넘겨준다.
         const handleSubmit = (event) => {
             event.preventDefault();
             this.props.setUserAnswer(this.state.answer);
-            this.setState({ answer: '' })
+            this.setState({
+                answer: ''
+            })
         }
         return (
             <>

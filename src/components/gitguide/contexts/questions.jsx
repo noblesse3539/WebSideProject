@@ -48,13 +48,18 @@ class QuestionsProvider extends Component {
                 userAnswer: ''
             })
         },
-        setUserAnswer: (answer) => {
-            if (answer === this.state.basic[this.state.count].answer) {
-                this.setState(
-                    // (state.basic) => ({
+        setUserAnswer: (userAnswer) => {
+            const answer = this.state.basic[this.state.count].answer
 
-                    // })
-                );
+            // 사용자가 제출한 답안이 정답일 경우
+            if (userAnswer === answer) {
+                console.log(answer);
+                console.log(this.state.basic[this.state.count].answer);
+            }
+            // 사용자가 제출한 답안이 오답일 경우
+            if (userAnswer !== answer) {
+                console.log(userAnswer);
+                console.log(answer);
             }
 
             // 사용자가 제출한 정답 데이터 저장하기
