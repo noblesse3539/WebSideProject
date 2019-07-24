@@ -7,7 +7,7 @@ export default class VerticalNav extends React.Component {
         let nav = []
         console.log(this.props.pages)
         for (let i = 0; i < this.props.pages; i++) {
-            nav.push(<div className="nav-circle"/>)
+            nav.push(<div key={i} className="nav-circle"/>)
         }
         console.log(nav)
         return nav
