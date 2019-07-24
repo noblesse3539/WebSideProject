@@ -37,7 +37,7 @@ class AnswerInputForm extends Component {
                     <input onChange={handleChange} value={this.state.answer} />
                     <button type="submit">제출</button>
                 </form>
-                <p>State 데이터 확인: {this.state.answer}</p>
+                {/* <p>State 데이터 확인: {this.state.answer}</p> */}
             </>
         )
     }
@@ -52,7 +52,7 @@ const AnswerInputFormContainer = () => (
                         value={state.userAnswer}
                         setUserAnswer={actions.setUserAnswer}
                     />
-                    <p>Context 데이터 확인: {state.userAnswer}</p>
+                    {/* <p>Context 데이터 확인: {state.userAnswer}</p> */}
                 </>
             )
         }

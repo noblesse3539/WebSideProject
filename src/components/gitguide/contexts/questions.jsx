@@ -1,6 +1,4 @@
 import React, { Component, createContext } from 'react';
-import update from 'immutability-helper';
-import { thisExpression } from '@babel/types';
 
 const Context = createContext();
 const { Provider, Consumer: QuestionsConsumer } = Context;
@@ -53,8 +51,7 @@ class QuestionsProvider extends Component {
         },
         setUserAnswer: (userAnswer) => {
             const answer = this.state.basic[this.state.count].answer
-
-            // 사용자가 제출한 답안이 정답일 경우
+            // 사용자가 제출한 답안이 정답일 경우 - score: 1
             if (userAnswer === answer) {
                 this.setState({
                     basic: this.state.basic.map(
@@ -64,12 +61,16 @@ class QuestionsProvider extends Component {
                     )
                 })
             }
-
+            // 사용자가 제출한 답안이 오답일 경우 - score: 2
             if (userAnswer !== answer) {
-                console.log(userAnswer);
-                console.log(answer);
+                this.setState({
+                    basic: this.state.basic.map(
+                        question => question.questionId === this.state.count
+                        ? { ...question, score: 2}
+                        : question
+                    )
+                })
             }
-
             // 사용자가 제출한 정답 데이터 저장하기
             this.setState({
                 userAnswer: answer
