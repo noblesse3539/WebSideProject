@@ -1,0 +1,17 @@
+.course-wrapper {
+    min-height: calc(100vh - 160px);
+}
+.course-flex {
+    display: flex;
+    min-height: calc(100vh - 160px);
+    align-items: center;
+}
+.course-box {
+    display: flex;
+    height: 60vh;
+    width: 80vw;
+    padding: 20px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px 0 gray;
+}

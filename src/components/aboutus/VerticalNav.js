@@ -1,5 +1,5 @@
 import React from 'react'
-import 'assets/sass/aboutus/VerticalNav.scss'
+import './VerticalNav.scss'
 
 export default class VerticalNav extends React.Component {
     createVerticalNav = () => {
