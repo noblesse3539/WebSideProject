@@ -1,4 +1,6 @@
 import React, { Component, createContext } from 'react';
+import update from 'immutability-helper';
+import { thisExpression } from '@babel/types';
 
 const Context = createContext();
 const { Provider, Consumer: QuestionsConsumer } = Context;
@@ -15,7 +17,7 @@ class QuestionsProvider extends Component {
                 answer: "git init",
                 hint: "git ____",
                 terminalResult: "",
-                // score: 0,
+                score: 0,
             },
             {
                 questionId: 1,
@@ -24,7 +26,7 @@ class QuestionsProvider extends Component {
                 answer: "git clone https://github.com/yooco0618/GitGuide.git",
                 hint: "___ _____ https://github.com/yooco0618/GitGuide.git",
                 terminalResult: "",
-                // score: 0,
+                score: 0,
             },
         ]
     }
@@ -47,23 +49,22 @@ class QuestionsProvider extends Component {
             this.setState({
                 userAnswer: ''
             })
+            console.log(this.state.basic);
         },
         setUserAnswer: (userAnswer) => {
             const answer = this.state.basic[this.state.count].answer
 
             // 사용자가 제출한 답안이 정답일 경우
             if (userAnswer === answer) {
-                
                 this.setState({
                     basic: this.state.basic.map(
                         question => question.questionId === this.state.count
-                            ? { ...question, score: 1 }
-                            : question
+                        ? { ...question, score: 1}
+                        : question
                     )
                 })
-                console.log(this.state.basic[0]);
             }
-            // 사용자가 제출한 답안이 오답일 경우
+
             if (userAnswer !== answer) {
                 console.log(userAnswer);
                 console.log(answer);
