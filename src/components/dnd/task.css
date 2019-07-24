@@ -1,0 +1,93 @@
+.userInput {
+    /* background: red; */
+}
+
+.container {
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    padding: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+    background: white !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-around;
+}
+
+::placeholder  {
+    color: black;
+}
+
+.deleteTask {
+    color: black;
+    font-size: 0.75rem;
+    font-weight: bold;
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    background: #8FD0CA;
+    border-radius : 50%;
+    border: 1px solid rgba(255, 0, 66, 0.2);
+}
+
+.taskContent {
+    border : none;
+    color  : black;
+    width  : 60%;
+    margin-left : 10px;
+}
+
+.task-container {
+    font-family: 'Ubuntu', sans-serif;
+    color: #172b4d;
+    word-wrap: break-word !important;
+    text-decoration: none !important;
+}
+
+.task-container:hover {
+    background: rgba(241, 50, 245, 0.2);
+}
+
+.task-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tagList {
+    margin: 0;
+    padding: 0;
+}
+
+.tagList > li {
+    display: inline-block;
+    margin-right: 5px;
+    width: 30px;
+    height: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.orange {
+    background: orange;
+}
+
+.red {
+    background: hotpink;
+}
+
+.green {
+    background: green;
+}
+
+.blue {
+    background: skyblue;
+}
