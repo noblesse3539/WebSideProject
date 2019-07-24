@@ -1,0 +1,26 @@
+.topnav-wrapper {
+    height: 90px;
+    width: 100%;
+    padding: 10px 40px; 
+    box-sizing: border-box;
+    box-shadow: 0px 1px 5px gray;
+    font-weight: 700;
+    font-size: 20px;
+}
+.topnav-flex {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.left, .right {
+    display: flex;
+}
+.logo {
+    font-size: 20px;
+}
+.item {
+    margin: 0 20px;
+}
