@@ -34,7 +34,7 @@ const AnswerContainer = () => (
         {
             ({ state }) => (
                 <Answer
-                    score={state.basic[state.count].score}
+                    score={state.Basic[state.count].score}
                 />
             )
         }

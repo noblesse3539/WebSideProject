@@ -7,7 +7,7 @@ class QuestionsProvider extends Component {
     state = {
         count: 0,           // 사용자가 보고있는 문제의 인덱스값
         userAnswer: '',     // 사용자가 제출한 답
-        basic: [
+        Basic: [
             {
                 questionId: 0,
                 topic: "새로운 저장소 만들기",
@@ -47,14 +47,14 @@ class QuestionsProvider extends Component {
             this.setState({
                 userAnswer: ''
             })
-            console.log(this.state.basic);
+            console.log(this.state.Basic);
         },
         setUserAnswer: (userAnswer) => {
-            const answer = this.state.basic[this.state.count].answer
+            const answer = this.state.Basic[this.state.count].answer
             // 사용자가 제출한 답안이 정답일 경우 - score: 1
             if (userAnswer === answer) {
                 this.setState({
-                    basic: this.state.basic.map(
+                    Basic: this.state.Basic.map(
                         question => question.questionId === this.state.count
                         ? { ...question, score: 1}
                         : question
@@ -64,7 +64,7 @@ class QuestionsProvider extends Component {
             // 사용자가 제출한 답안이 오답일 경우 - score: 2
             if (userAnswer !== answer) {
                 this.setState({
-                    basic: this.state.basic.map(
+                    Basic: this.state.Basic.map(
                         question => question.questionId === this.state.count
                         ? { ...question, score: 2}
                         : question

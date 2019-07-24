@@ -1,4 +1,11 @@
-.GitGuide {
-    background-color: lightgrey;
-    padding: 15px;
+.GitGuide__Wrapper {
+    display: grid;
+}
+
+.GitGuide__Wrapper > div {
+    background-color: orange;
+}
+
+.GitGuide__Wrapper > div:nth-child(odd) {
+    background-color: indianred;
 }
