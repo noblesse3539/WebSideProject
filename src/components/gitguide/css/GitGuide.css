@@ -1,11 +1,11 @@
 .GitGuide__Wrapper {
-    display: grid;
+    margin: auto;
+    width: 70%;
+    background-color: white;
 }
 
-.GitGuide__Wrapper > div {
-    background-color: orange;
-}
-
-.GitGuide__Wrapper > div:nth-child(odd) {
-    background-color: indianred;
+@media (max-width: 720px) {
+    .GitGuide__Wrapper {
+        width: 100%;
+    }
 }
