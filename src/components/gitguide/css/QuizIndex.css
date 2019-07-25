@@ -4,3 +4,20 @@
     padding-top: 50px;
     padding-bottom: 50px;
 }
+
+.QuizIndex__Button {
+
+}
+
+.QuizIndex__Current {
+    padding: 5vw;
+}
+
+.QuizIndex__ShowIndex {
+    float: left;
+}
+
+.QuizIndex__Time {
+    float: right;
+    margin: 0;
+}

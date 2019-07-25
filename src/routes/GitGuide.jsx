@@ -13,6 +13,8 @@ const GitGuide = () => {
             <div className="GitGuide__Wrapper">
                 <GitGuideHeader />
                 <QuizIndex />
+                <br />
+                <br />
                 <div className="GitGuide__Quiz">
                     <Quiz />
                 </div>
