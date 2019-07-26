@@ -1,0 +1,11 @@
+.GitHeader {
+    background-color: rgb(0, 107, 56);
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.GitHeader__Name {
+    font-size: 1.8rem;
+    color: whitesmoke;
+}

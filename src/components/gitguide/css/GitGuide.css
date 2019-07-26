@@ -1,4 +1,11 @@
-.GitGuide {
-    background-color: lightgrey;
-    padding: 15px;
+.GitGuide__Wrapper {
+    margin: auto;
+    width: 70%;
+    background-color: white;
+}
+
+@media (max-width: 720px) {
+    .GitGuide__Wrapper {
+        width: 100%;
+    }
 }
