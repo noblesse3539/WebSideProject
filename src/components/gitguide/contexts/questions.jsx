@@ -16,6 +16,7 @@ class QuestionsProvider extends Component {
                 hint: "git ____",
                 terminalResult: "",
                 score: 0,
+                editable: true,
             },
             {
                 questionId: 1,
@@ -25,6 +26,7 @@ class QuestionsProvider extends Component {
                 hint: "___ _____ https://github.com/yooco0618/GitGuide.git",
                 terminalResult: "",
                 score: 0,
+                editable: true,
             },
         ]
     }
@@ -56,7 +58,7 @@ class QuestionsProvider extends Component {
                 this.setState({
                     Basic: this.state.Basic.map(
                         question => question.questionId === this.state.count
-                        ? { ...question, score: 1}
+                        ? { ...question, score: 1, editable: false}
                         : question
                     )
                 })
@@ -66,7 +68,7 @@ class QuestionsProvider extends Component {
                 this.setState({
                     Basic: this.state.Basic.map(
                         question => question.questionId === this.state.count
-                        ? { ...question, score: 2}
+                        ? { ...question, score: 2, editable: false}
                         : question
                     )
                 })

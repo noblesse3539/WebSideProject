@@ -5,7 +5,7 @@ const GitGuideHeader = () => {
     return (
         <div className="GitHeader">
             <h2 className="GitHeader__Name">
-                Basic Course
+                Git Basic Course
             </h2>
         </div>
     )

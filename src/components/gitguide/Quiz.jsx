@@ -1,32 +1,38 @@
 import React, { Component } from 'react';
-import Question from './Question';
-import Answer from './Answer';
-import { QuestionsConsumer } from './contexts/questions';
 import './Quiz.scss'
 
-class Quiz extends Component {
-    state = {
-        score: 0,
-    }
+import Question from './Question';
+import AnswerInputform from './AnswerInputForm';
 
+class Quiz extends Component {
     render() {
         return (
-            <QuestionsConsumer>
-                {
-                    ({ state, actions }) => (
-                        <div className="Quiz">
-                            <div className="Quiz__Question">
-                                <Question />
-                            </div>
-                            <div className="Quiz__Answer">
-                                <Answer />
-                            </div>
-                        </div>
-                    )
-                }
-            </QuestionsConsumer>
+            <>
+                <div className="Quiz">
+                    <div className="Quiz__QuestionWrapper">
+                        <Question />
+                    </div>
+                    <div className="Quiz__InputWrapper">
+                        <TerminalPath />
+                        <AnswerInputform />
+                    </div>
+                </div>
+            </>
         );
     }
+}
+
+const TerminalPath = () => {
+    return (
+        <>
+            <p className="TerminalPath">
+                ~/GitGuide/BasicCourse
+            </p>
+            <p style={{ color: "yellow", display: "inline" }}>
+                $
+            </p>
+        </>
+    )
 }
 
 export default Quiz;

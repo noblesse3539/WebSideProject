@@ -6,7 +6,7 @@ class QuizIndex extends React.Component {
         return (
             <>
                 <div className="QuizIndex">
-                    Index buttons are here !!
+                    Index buttons are here !
                 </div>
                 <div className="QuizIndex__CurrentWrapper">
                     <div className="QuizIndex__Current">

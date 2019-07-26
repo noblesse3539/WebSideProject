@@ -1,0 +1,22 @@
+.Quiz__InputWrapper {
+    margin: 5vh 8vw;
+    padding: 4vh;
+    background-color: darkslategrey;
+    font-family: 'Share';
+    font-size: 1em;
+    border-radius: 5px;
+    min-height: 30vw;
+}
+
+.TerminalPath {
+    text-align: left;
+    color: darkorange;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+@media (min-width: 720px) {
+    .Quiz__InputWrapper {
+        font-size: 1.8em;
+    }
+}
