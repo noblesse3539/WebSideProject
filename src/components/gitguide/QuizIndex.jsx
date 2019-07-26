@@ -8,10 +8,12 @@ class QuizIndex extends React.Component {
                 <div className="QuizIndex">
                     Index buttons are here !!
                 </div>
-                <div className="QuizIndex__Current">
-                    <ShowCurrentIndex />
-                    <ShowTimeRemaining />
-                    <div style={{clear: "both"}}></div>
+                <div className="QuizIndex__CurrentWrapper">
+                    <div className="QuizIndex__Current">
+                        <ShowCurrentIndex />
+                        <ShowTimeRemaining />
+                        <div style={{ clear: "both" }}></div>
+                    </div>
                 </div>
             </>
         )

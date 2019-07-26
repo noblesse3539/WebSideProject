@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Jua|Share:700&display=swap');
+
 .GitGuide__Wrapper {
     margin: auto;
     width: 70%;
     background-color: white;
+}
+
+.GitGuide__Quiz {
+    padding: 20px;
 }
 
 @media (max-width: 720px) {

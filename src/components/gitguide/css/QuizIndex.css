@@ -1,23 +1,30 @@
 .QuizIndex {
     background-color: rgb(120, 189, 112);
     text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 
 .QuizIndex__Button {
+    
+}
 
+.QuizIndex__CurrentWrapper {
+    text-align: center;
+    padding: 5%;
 }
 
 .QuizIndex__Current {
-    padding: 5vw;
+    border-bottom: 2px solid black;
+    font-size: 1em;
 }
 
 .QuizIndex__ShowIndex {
     float: left;
+    font-weight: bold;
 }
 
 .QuizIndex__Time {
     float: right;
-    margin: 0;
+    font-weight: bold;
 }
