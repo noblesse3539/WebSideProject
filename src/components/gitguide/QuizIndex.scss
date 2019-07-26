@@ -12,19 +12,27 @@
 .QuizIndex__CurrentWrapper {
     text-align: center;
     padding: 5%;
+    font-family: 'Jua';
 }
 
 .QuizIndex__Current {
     border-bottom: 2px solid black;
-    font-size: 1em;
+    font-size: 1.1em;
+    font-weight: 500;
 }
 
 .QuizIndex__ShowIndex {
     float: left;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .QuizIndex__Time {
     float: right;
-    font-weight: bold;
+    /* font-weight: bold; */
+}
+
+@media (min-width: 720px) {
+    .QuizIndex__Current {
+        font-size: 1.4em;
+    }
 }

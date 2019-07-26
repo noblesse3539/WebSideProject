@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Question from './Question';
 import Answer from './Answer';
 import { QuestionsConsumer } from './contexts/questions';
+import './Quiz.scss'
 
 class Quiz extends Component {
     state = {

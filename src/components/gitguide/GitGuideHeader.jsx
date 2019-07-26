@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/GitGuideHeader.css';
+import './GitGuideHeader.scss';
 
 const GitGuideHeader = () => {
     return (

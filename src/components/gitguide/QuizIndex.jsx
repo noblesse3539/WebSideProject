@@ -1,5 +1,5 @@
 import React from 'react';
-import './css/QuizIndex.css';
+import './QuizIndex.scss';
 
 class QuizIndex extends React.Component {
     render() {

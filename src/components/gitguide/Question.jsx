@@ -1,23 +1,43 @@
 import React, { Component } from 'react';
-import QuestionDetail from './QuestionDetail';
 import { QuestionsConsumer } from './contexts/questions';
+import './Question.scss';
 
 class Question extends Component {
     render() {
         return (
             <QuestionsConsumer>
                 {
-                    ({ state, actions }) => (
-                        <div>
-                            <button onClick={actions.prevQuestion}>이전문제</button>
-                            <button onClick={actions.nextQuestion}>다음문제</button>
-                            <QuestionDetail questionId={state.count} />
-                        </div>
+                    ({ state }) => (
+                        <>
+                            <div className="Question__TopicName">
+                                <Topic name={state.Basic[state.count].topic} />
+
+                            </div>
+                            <div className="Question__Content">
+                                <QuestionContent content={state.Basic[state.count].question} />
+                            </div>
+                        </>
                     )
                 }
             </QuestionsConsumer>
         )
     }
+}
+
+const Topic = ({ name }) => {
+    return (
+        <>
+            <p>{name}</p>
+        </>
+    )
+}
+
+const QuestionContent = ({ content }) => {
+    return (
+        <>
+            <p className="Question__ContentText">{content}</p>
+        </>
+    )
 }
 
 export default Question;
