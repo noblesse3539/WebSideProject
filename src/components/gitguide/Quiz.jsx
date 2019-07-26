@@ -28,7 +28,7 @@ const TerminalPath = () => {
             <p className="TerminalPath">
                 ~/GitGuide/BasicCourse
             </p>
-            <p style={{ color: "yellow", display: "inline" }}>
+            <p style={{ color: "white", display: "inline" }}>
                 $
             </p>
         </>
