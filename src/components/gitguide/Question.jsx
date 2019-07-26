@@ -9,7 +9,7 @@ class Question extends Component {
                 {
                     ({ state }) => (
                         <>
-                            <div className="Question__TopicName">
+                            <div className="Question__Topic">
                                 <Topic name={state.Basic[state.count].topic} />
 
                             </div>
@@ -27,7 +27,7 @@ class Question extends Component {
 const Topic = ({ name }) => {
     return (
         <>
-            <p>{name}</p>
+            <p className="Question__TopicText">{name}</p>
         </>
     )
 }
