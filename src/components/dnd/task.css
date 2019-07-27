@@ -3,7 +3,7 @@
 }
 
 .container {
-    border: 1px solid lightgrey;
+    /* border: 1px solid lightgrey; */
     border-radius: 2px;
     padding: 8px;
     margin-left: 10px;
@@ -19,6 +19,15 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: space-around;
+}
+
+.task-container:hover {
+    background: rgb(255, 68, 102) !important;
+    transition: 0.25s;
+}
+
+.task-container:hover > .task-content {
+    color: white;
 }
 
 ::placeholder  {
@@ -58,6 +67,8 @@
 .task-content {
     display: flex;
     justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .tagList {

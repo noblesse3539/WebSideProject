@@ -44,6 +44,7 @@ export default class Column extends React.Component {
         this.closeModal     = this.closeModal.bind(this)
         this.handleSubmit   = this.handleSubmit.bind(this)
         this.handleChange   = this.handleChange.bind(this)
+        this.setIsModal     = this.setIsModal.bind(this)
         this.state = {
             isModalOpen : false
         }
@@ -56,9 +57,17 @@ export default class Column extends React.Component {
     }
 
     closeModal(taskModalIndex) {
-        const modal = document.querySelector(`.${taskModalIndex}`)
+        const modal = document.querySelector(`.taskModal-${taskModalIndex}`)
         modal.style.display = 'none'
         this.setState({isModalOpen: false})
+    }
+
+    setIsModal() {
+        if (this.state.isModalOpen == true) {
+            this.setState({isModalOpen: false})
+        } else {
+            this.setState({isModalOpen: true})
+        }
     }
 
     handleSubmit(event) {
@@ -99,12 +108,14 @@ export default class Column extends React.Component {
                                         <Task 
                                             key={task.id} 
                                             task={task}
-                                            index={index} 
+                                            index={index}
+                                            tags={this.props.tags}
                                             column={this.props.column}
                                             deleteTask={this.props.deleteTask} 
                                             updateTaskContent={this.props.updateTaskContent}
                                             openModal={this.openModal}
                                             closeModal={this.closeModal}
+                                            setIsModal={this.setIsModal}
                                             isDragDisabled={this.state.isModalOpen}
                                         >
                                         </Task>

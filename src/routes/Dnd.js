@@ -17,7 +17,6 @@ class Dnd extends React.Component {
     state = initialData
     counter = 5 // addNewTask 메서드용 임시 변수 (현재 전체 task의 개수)
 
-
     updateTaskContent = (taskId, taskIndex, columnId, newContent, e, key) => {
         
         const toUnFocus = document.querySelector(`#${taskId}`)
@@ -202,8 +201,9 @@ class Dnd extends React.Component {
                         {this.state.columnOrder.map((columnId, index) => {
                         const column = this.state.columns[columnId]
                         const tasks  = column.taskIds.map(taskId => this.state.tasks[taskId])
+                        const tags   = this.state.tags
 
-                        return <Column key={column.id} column={column} tasks={tasks} 
+                        return <Column key={column.id} column={column} tasks={tasks} tags={tags}
                                 index={index} addNewTask={this.addNewTask} deleteTask={this.deleteTask}
                                 updateTaskContent={this.updateTaskContent}
                                 />

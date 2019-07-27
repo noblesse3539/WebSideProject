@@ -43,6 +43,7 @@ export default class Task extends React.Component {
             // target이 modal인 경우 모달이 꺼지게 만들면 된다.
             if (event.target == modal) {
                 modal.style.display = 'none'
+                this.props.setIsModal()
             }
         })
     }
@@ -66,7 +67,7 @@ export default class Task extends React.Component {
                     rotationMultiplier="1.2"
                     >
                     {style => (
-                    <div className="container"
+                    <div className="container task-container"
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
@@ -95,6 +96,7 @@ export default class Task extends React.Component {
                             task={this.props.task}
                             column={this.props.column}
                             index={this.props.index}
+                            tags={this.props.tags}
                             updateTaskContent={this.props.updateTaskContent}
                             newContent={this.state.newContent}
                             handleChange={this.handleChange}
