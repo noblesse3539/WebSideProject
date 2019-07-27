@@ -1,8 +1,8 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import { Draggable } from 'react-beautiful-dnd'
 import NaturalDragAnimation from 'natural-drag-animation-rbdnd'
+import Taskmodal from './taskmodal'
 import './task.css'
 
 const Container = styled.div`
@@ -53,7 +53,11 @@ export default class Task extends React.Component {
         const newContent = ''
 
         return (
-            <Draggable draggableId={this.props.task.id} index={this.props.index}>
+            <Draggable 
+                draggableId={this.props.task.id} 
+                index={this.props.index}
+                isDragDisabled={this.props.isDragDisabled}
+            >
                 {(provided, snapshot) => (
                     <NaturalDragAnimation
                     style={provided.draggableProps.style}
@@ -81,45 +85,22 @@ export default class Task extends React.Component {
                         </div>
                         <div className="task-content">
                             {this.props.task.content}
-                            <button className="deleteTask" onClick={() =>
+                            {/* <button className="deleteTask" onClick={() =>
                                 this.props.deleteTask(this.props.task.id, this.props.index, this.props.column.id)}
                             >
                                 &#10006;
-                            </button>
+                            </button> */}
                         </div>
-                        {/* Task Modal */}
-                        <div className={`taskModal taskModal-${this.props.task.id}`}>
-                            <div className="taskModalContent">
-                                <div className="taskModalClose" onClick={ () => this.props.closeModal(`taskModal-${this.props.task.id}`)}>&times;</div>
-                                <div className="taskModal-content">
-                                    <input
-                                        className="taskModal-title" 
-                                        onChange={this.handleChange} type="text" 
-                                        defaultValue={this.props.task.content}
-                                        onKeyDown={()=> this.props.updateTaskContent(
-                                                    this.props.task.id,
-                                                    this.props.index, 
-                                                    this.props.column.id, 
-                                                    this.state.newContent
-                                                    )}
-                                    />
-                                    <h3>In list <u><i>{this.props.column.title}</i></u></h3>
-                                        <div className="tagList-inside">
-                                            <h3 className="tag-list-title">Tags</h3>
-                                            <ul className="tag-list">
-                                                <li className={`tag-${}`}>
-                                                    
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <h3 className="tagList">Description</h3>
-                                        <input type="text"/>
-                                        {this.props.task.content}
-                                </div>
-                                <div className="taskModal-option"></div>
-                            </div>
-                        </div>
-                        {/* Task Modal End */}
+                        <Taskmodal
+                            task={this.props.task}
+                            column={this.props.column}
+                            index={this.props.index}
+                            updateTaskContent={this.props.updateTaskContent}
+                            newContent={this.state.newContent}
+                            handleChange={this.handleChange}
+                            ref={this.props.ref}
+                        >
+                        </Taskmodal>
                       </div>
                     )}
                   </NaturalDragAnimation>

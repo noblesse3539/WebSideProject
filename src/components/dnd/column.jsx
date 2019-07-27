@@ -16,7 +16,8 @@ const Title = styled.div`
     font-size: 3rem;
     display: flex;
     justify-content: space-between;
-    background: #dfe3ee;
+    background: #004B8D;
+    color: white;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     font-family: 'Shadows Into Light', cursive;
@@ -31,20 +32,33 @@ const TaskList = styled.div`
     flex-direction: column;
     flex-grow: 1;
     min-height: 25px;
-    background-color: ${props => props.isDraggingOver ? "#ffb7c5" : "#dfe3ee"};
+    background-color: ${props => props.isDraggingOver ? "#004B8D" : "#004B8D"};
 `
 
 export default class Column extends React.Component {
 
+    constructor(props) {
+        super(props)
+        this.childRef       = React.createRef()
+        this.openModal      = this.openModal.bind(this)
+        this.closeModal     = this.closeModal.bind(this)
+        this.handleSubmit   = this.handleSubmit.bind(this)
+        this.handleChange   = this.handleChange.bind(this)
+        this.state = {
+            isModalOpen : false
+        }
+    }
+
     openModal(taskModalIndex) {
-        console.log(taskModalIndex)
         const modal = document.querySelector(`.${taskModalIndex}`)
         modal.style.display = 'block'
+        this.setState({isModalOpen : true})
     }
 
     closeModal(taskModalIndex) {
         const modal = document.querySelector(`.${taskModalIndex}`)
         modal.style.display = 'none'
+        this.setState({isModalOpen: false})
     }
 
     handleSubmit(event) {
@@ -91,6 +105,7 @@ export default class Column extends React.Component {
                                             updateTaskContent={this.props.updateTaskContent}
                                             openModal={this.openModal}
                                             closeModal={this.closeModal}
+                                            isDragDisabled={this.state.isModalOpen}
                                         >
                                         </Task>
                                     )}

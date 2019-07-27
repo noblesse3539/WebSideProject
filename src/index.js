@@ -7,6 +7,7 @@ import AboutUs from 'routes/AboutUs';
 import Markdown from 'routes/Markdown';
 import GitGuide from 'routes/GitGuide';
 import Course from 'routes/Course'
+import Dnd from 'routes/Dnd'
 
 import './index.scss'
 
@@ -19,6 +20,7 @@ class App extends React.Component {
                     <Route path="/aboutus" component={AboutUs}/>
                     <Route path="/markdown" component={Markdown}/>
                     <Route path="/gitguide" component={GitGuide}/>
+                    <Route path="/dnd" component={Dnd}/>
                     <Route path="/course" component={Course}/>
                 </div>
             </Router>

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import initialData from './initial-data'
-import Column from './column'
+import initialData from '../components/dnd/initial-data'
+import Column from '../components/dnd/column'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import styled from 'styled-components'
 
