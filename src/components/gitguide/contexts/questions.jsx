@@ -14,7 +14,7 @@ class QuestionsProvider extends Component {
                 question: "프로젝트 폴더를 생성하여 Git으로 관리하려고 합니다. 새로 생성한 폴더를 Git 저장소로 초기화하는 명령어를 입력하세요.",
                 answer: "git init",
                 hint: "git ____",
-                terminalResult: "",
+                terminalResult: "/GitGuide/BasicCourse/.git/ 안의 빈 깃 저장소를 다시 초기화했습니다",
                 score: 0,
                 editable: true,
             },

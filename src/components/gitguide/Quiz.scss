@@ -15,8 +15,22 @@
     margin-bottom: 0;
 }
 
+.PleaseSubmit {
+    margin-top: 7px;
+    font-family: 'Jua';
+    font-weight: 400;
+    padding-top: 1vh;
+    padding-left: 1vw;
+    color: white;
+    font-size: 0.8em;
+}
+
 @media (min-width: 720px) {
     .Quiz__InputWrapper {
         font-size: 1.8em;
+    }
+
+    .PleaseSubmit {
+        font-size: 0.8em;
     }
 }
