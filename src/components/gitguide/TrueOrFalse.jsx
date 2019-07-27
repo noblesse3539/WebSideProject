@@ -5,30 +5,36 @@ export default class TrueOrFalse extends React.Component {
     render() {
         if (this.props.score === 1) {
             return (
-                <TrueRender />
-            );
+                <TrueRender
+                    trueMessage={this.props.trueMessage}
+                />
+            )
         }
         if (this.props.score === 2) {
             return (
-                <FalseRender />
+                <FalseRender 
+                    answer={this.props.answer}
+                />
             );
         }
-        return false;
     }
 }
 
-const TrueRender = () => {
+const TrueRender = ({ trueMessage }) => {
     return (
         <>
-            <p className="TrueOrFalse__True">마 정답이다,,,</p>
+            <p className="TrueOrFalse__True">{trueMessage}</p>
         </>
     );
 };
 
-const FalseRender = () => {
+const FalseRender = ({ answer }) => {
     return (
         <>
-            <p className="TrueOrFalse__False">마 틀렸다,,,</p>
+            <span className="TrueOrFalse__False">
+                정답이 아니라도 실망하지 마세요! :) <br />
+                정답은 <i>{answer}</i>입니다.
+            </span>
         </>
     );
 };

@@ -7,7 +7,25 @@ import AnswerInputform from './AnswerInputForm';
 import TrueOrFalse from './TrueOrFalse';
 
 class Quiz extends Component {
+    state = {
+        show: false
+    }
+
     render() {
+        const submitted = () => {
+            return (
+                <TrueOrFalse
+                    score={this.props.score}
+                    trueMessage={this.props.message}
+                    answer={this.props.answer}
+                />
+            );
+        }
+
+        const notSubmitted = () => {
+            return '터미널에 코드를 입력해주세요!'
+        }
+
         return (
             <QuestionsConsumer>
                 {
@@ -19,9 +37,7 @@ class Quiz extends Component {
                             <div className="Quiz__InputWrapper">
                                 <TerminalPath />
                                 <AnswerInputform />
-                                <TrueOrFalse
-                                    score={state.Basic[state.count].score}
-                                />
+                                {state.Basic[state.count].score === 0 ? notSubmitted() : submitted()}
                             </div>
                         </div>
                     )
@@ -44,4 +60,20 @@ const TerminalPath = () => {
     )
 }
 
-export default Quiz;
+const QuizContainer = () => {
+    return (
+        <QuestionsConsumer>
+            {
+                ({state}) => (
+                    <Quiz
+                        score={state.Basic[state.count].score}
+                        message={state.Basic[state.count].terminalResult}
+                        answer={state.Basic[state.count].answer}
+                    />
+                )
+            }
+        </QuestionsConsumer>
+    )
+}
+
+export default QuizContainer;
