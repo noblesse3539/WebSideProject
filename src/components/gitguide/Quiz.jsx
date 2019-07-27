@@ -23,7 +23,11 @@ class Quiz extends Component {
         }
 
         const notSubmitted = () => {
-            return '터미널에 코드를 입력해주세요!'
+            return (
+                <p className="PleaseSubmit">
+                    <i>위 터미널에 명령어를 입력하면<br/> 이곳에 정답 유무가 출력됩니다.</i>
+                </p>
+            )
         }
 
         return (
