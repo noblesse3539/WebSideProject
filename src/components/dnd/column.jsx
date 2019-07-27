@@ -57,9 +57,10 @@ export default class Column extends React.Component {
     }
 
     closeModal(taskModalIndex) {
-        const modal = document.querySelector(`.taskModal-${taskModalIndex}`)
+        const modal = document.querySelector(`${taskModalIndex}`)
+        console.log(modal)
         modal.style.display = 'none'
-        this.setState({isModalOpen: false})
+        this.setIsModal()
     }
 
     setIsModal() {

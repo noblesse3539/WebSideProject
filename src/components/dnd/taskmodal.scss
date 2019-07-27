@@ -11,6 +11,7 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 1);
     background-color: rgba(0,0,0,0.4);
+    transition: 0.25s;
 }
 
 .taskModal-title {
@@ -129,6 +130,7 @@
 }
 
 .tag-list-add {
+    outline: none;
     width: 74px;
     border: none;
     background: rgba(0, 75, 141, 1);
@@ -146,11 +148,12 @@
 .tag-list-add:hover {
     cursor: pointer;
     background-color: rgba(0, 75, 141, 1);
-    box-shadow: 0px 15px 20px rgba(0,0,0, 0.4);
+    box-shadow: 0px 15px 20px rgba(0, 75, 141, 0.5);
     color: #fff;
 }
 
 .tag-list-add:active {
+    outline: none;
     transform: translateY(-2px);
     transition: 0.1s;
 }
@@ -194,4 +197,16 @@
     font-size: 1rem;
     text-align: center;
     margin: 0 !important; 
+}
+
+.taskModal-textarea {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    outline: none;
+}
+
+.taskModal-textarea:focus {
+    border: 1px solid rgba(0, 75, 141, 1);
 }

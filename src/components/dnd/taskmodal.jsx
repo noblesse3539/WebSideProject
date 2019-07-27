@@ -46,8 +46,10 @@ export default class Taskmodal extends React.Component {
                                 )}
                             />
                             {/* <div className="taskModalClose" onClick={() => this.props.closeModal(`taskModal-${this.props.task.id}`)}>&times;</div> */}
-                            <div className="taskModal-closeBtn">
-                                <div className="taskModal-closeBtn-wrapper">
+                            <div className="taskModal-closeBtn"
+                                onClick={() => this.props.closeModal(`.taskModal-${this.props.task.id}`)}
+                            >
+                                <div className={`taskModal-closeBtn-wrapper-${this.props.task.id} taskModal-closeBtn-wrapper`}>
                                     &#10006;
                                 </div>
                             </div>
@@ -76,7 +78,7 @@ export default class Taskmodal extends React.Component {
                                 </ul> */}
                             </div>
                             <div className="taskModal-description">
-                                <h3 className="taskModal-description-title">Description</h3>
+                                <h3 className="taskModal-description-title">상세 설명</h3>
                                 <textarea className="taskModal-textarea" name="" id="" cols="30" rows="10"></textarea>
                             </div>
                         </div>

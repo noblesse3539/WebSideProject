@@ -38,10 +38,28 @@ export default class Task extends React.Component {
     componentDidMount() { 
         window.addEventListener('click', (event) => {
             const modal = document.querySelector(`.taskModal-${this.props.task.id}`)
-            
+            const modalCloseBtn = document.querySelector(".taskModal-closeBtn")
             // modal을 띄우는 순간 window전체가 (.taskModal)이므로
             // target이 modal인 경우 모달이 꺼지게 만들면 된다.
-            if (event.target == modal) {
+            event.preventDefault()
+            event.stopPropagation()
+
+            console.log(event.target.classList[0])
+            if (event.target == modal || event.target.classList[0] == 'taskModal-closeBtn-wrapper') {
+                modal.style.display = 'none'
+                this.props.setIsModal()
+            }
+        })
+    }
+
+    componentWillUnmount() {
+        window.addEventListener('click', (event) => {
+            const modal = document.querySelector(`.taskModal-${this.props.task.id}`)
+            const modalCloseBtn = document.querySelector(".taskModal-closeBtn")
+            // modal을 띄우는 순간 window전체가 (.taskModal)이므로
+            // target이 modal인 경우 모달이 꺼지게 만들면 된다.
+            console.log(event.target.classList[0])
+            if (event.target == modal || event.target.classList[0] == 'taskModal-closeBtn-wrapper') {
                 modal.style.display = 'none'
                 this.props.setIsModal()
             }
@@ -100,6 +118,7 @@ export default class Task extends React.Component {
                             updateTaskContent={this.props.updateTaskContent}
                             newContent={this.state.newContent}
                             handleChange={this.handleChange}
+                            closeModal={this.props.closeModal}
                             ref={this.props.ref}
                         >
                         </Taskmodal>
