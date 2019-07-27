@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
 import './Quiz.scss'
 
+import { QuestionsConsumer } from './contexts/questions';
 import Question from './Question';
 import AnswerInputform from './AnswerInputForm';
+import TrueOrFalse from './TrueOrFalse';
 
 class Quiz extends Component {
     render() {
         return (
-            <>
-                <div className="Quiz">
-                    <div className="Quiz__QuestionWrapper">
-                        <Question />
-                    </div>
-                    <div className="Quiz__InputWrapper">
-                        <TerminalPath />
-                        <AnswerInputform />
-                    </div>
-                </div>
-            </>
+            <QuestionsConsumer>
+                {
+                    ({ state }) => (
+                        <div className="Quiz">
+                            <div className="Quiz__QuestionWrapper">
+                                <Question />
+                            </div>
+                            <div className="Quiz__InputWrapper">
+                                <TerminalPath />
+                                <AnswerInputform />
+                                <TrueOrFalse
+                                    score={state.Basic[state.count].score}
+                                />
+                            </div>
+                        </div>
+                    )
+                }
+            </QuestionsConsumer>
         );
     }
 }
