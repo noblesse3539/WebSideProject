@@ -84,7 +84,7 @@ export default class Taskmodal extends React.Component {
                             <div className="taskModal-content-left">
                                 <h3 className="taskModal-contentTitle">현재 컬럼: <u><i>{this.props.column.title}</i></u></h3>
                                 <div className="taskModal-members">
-                                    <h3>멤버 목록</h3>
+                                    <h3><i class="fas fa-user"></i> 멤버 목록</h3>
                                     <div className="taskModal-members-list">
                                         {
                                             taskMembers.map( (member, index) => {
@@ -106,7 +106,7 @@ export default class Taskmodal extends React.Component {
                                     </div>
                                 </div>
                                 <div className="tagList-box">   
-                                    <h3 className="tag-list-title">태그 목록</h3>
+                                    <h3 className="tag-list-title"><i class="fas fa-tag"></i> 태그 목록</h3>
                                     <div className="tag-list-body">
                                         <div className="tag-list">
                                             {this.props.task.tag.map((tag, index) => {
@@ -158,6 +158,11 @@ export default class Taskmodal extends React.Component {
                                 <div className="taskModal-content-add-duedate">
                                     <button className="taskModal-content-btn">
                                         <i class="fas fa-clock"></i> 날짜 추가
+                                    </button>
+                                </div>
+                                <div className="taskModal-content-add-delete">
+                                    <button className="taskModal-content-btn taskModal-content-store">
+                                        <i class="fas fa-box-open"></i> 보관하기
                                     </button>
                                 </div>
                             </div>
