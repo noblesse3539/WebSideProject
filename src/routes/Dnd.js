@@ -92,7 +92,7 @@ class Dnd extends React.Component {
     }
 
     // By MozziCheek
-    addNewTask = (columnId) => {
+    addNewTask = (columnId, openModal) => {
         
         // const lastTaskId = this.state.taskOrder.length
         this.counter += 1
@@ -115,7 +115,7 @@ class Dnd extends React.Component {
             ...this.state,
                 tasks : {
                     ...this.state.tasks,
-                    [newTaskId] : { id: newTaskId, content: '추가되는가?', tag: [], description: '',},
+                    [newTaskId] : { id: newTaskId, content: '제목을 입력해주세요!', tag: [], description: '',},
                 },
                 columns: {
                     ...this.state.columns,
@@ -123,8 +123,9 @@ class Dnd extends React.Component {
                 taskOrder: newTaskOrder
         }}
         
-        this.setState(newState)
-        return
+        this.setState(newState, () => {
+            return openModal(`taskModal-${newTaskId}`)
+        })
     }
 
     onDragEnd = result => {

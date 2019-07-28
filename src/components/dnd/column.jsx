@@ -133,7 +133,7 @@ export default class Column extends React.Component {
                         </Droppable>
                         <div className="addTask-box">
                             <button key={this.props.column.id} className="addTask"
-                                onClick={() => this.props.addNewTask(this.props.column.id)}>+ Add a new task !</button>
+                                onClick={() => this.props.addNewTask(this.props.column.id, this.openModal)}>+ Add a new task !</button>
                         </div>
                         
                     </Container>
