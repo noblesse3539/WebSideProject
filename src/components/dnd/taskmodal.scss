@@ -333,29 +333,37 @@
 .taskModal-content-add-member-modal {
     // display: none !important;
     background: white;
+    background: rgba(0, 75, 141, 1);
     width: 250px;
+    color: white;
+    max-height: 596px;
     // height: 400px;
     position: absolute;
     z-index: 10;
     display: inline-block;
     top: 20%;
-    left: 70%;
+    left: 69%;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    overflow: auto;
     // top: 100%;
 }
 
 .taskModal-content-add-member-name {
     // display: inline-block !important;
     margin-left: 10px;
-    width: 60%;
+    width: 50%;
 }
 
 .taskModal-content-add-member-image-box {
     // display: inline-block !important;
     // width: 20%;
+    background: white;
+    color: black !important;
 }
 
 .taskModal-member-add-box {
@@ -365,6 +373,12 @@
     margin: 10px 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    color: black ;
+    background: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .taskModal-member-add-box:hover {
@@ -384,7 +398,7 @@
     margin-right: 10px;
     margin-bottom: 0px !important;
     padding-bottom: 10px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #f7f7f7;
 }
 
 .taskModal-content-add-btn {

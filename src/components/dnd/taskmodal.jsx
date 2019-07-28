@@ -5,13 +5,15 @@ export default class Taskmodal extends React.Component {
 
     constructor(props) {
         super(props)
-        this.clearInputValue = this.clearInputValue.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-        this.openAddingMemberModal = this.openAddingMemberModal.bind(this)
+        this.clearInputValue        = this.clearInputValue.bind(this)
+        this.handleChange           = this.handleChange.bind(this)
+        this.openAddingMemberModal  = this.openAddingMemberModal.bind(this)
+        this.openAddingTagModal     = this.openAddingTagModal.bind(this)
         this.state = {
             inputDefaultValue: this.props.task.content,
             descriptionInputValue: this.props.task.description,
             isAddingMemberModalOpen : false,
+            isAddingTagModalOpen: false,
         }
     }
 
@@ -45,6 +47,21 @@ export default class Taskmodal extends React.Component {
             this.setState({
                 ...this.state,
                 isAddingMemberModalOpen : false
+            })
+        }
+    }
+
+    openAddingTagModal() {
+
+        if (this.state.isAddingTagModalOpen == false) {
+            this.setState({
+                ...this.state,
+                isAddingTagModalOpen : true
+            })
+        } else {
+            this.setState({
+                ...this.state,
+                isAddingTagModalOpen : false
             })
         }
     }
@@ -197,6 +214,7 @@ export default class Taskmodal extends React.Component {
                                                             taskMemberStatus = <i class="far fa-check-square"></i>
                                                             taskMemberStatusStyle = {
                                                                 color: 'green',
+                                                                fontWeight: '700'
                                                             }
                                                         }
 
@@ -215,6 +233,7 @@ export default class Taskmodal extends React.Component {
                                                                                                     this.props.column.id,
                                                                                                     member.id,
                                                             )}
+                                                            style={taskMemberStatusStyle}
                                                         >
                                                             <div
                                                                 key={index}
@@ -239,12 +258,30 @@ export default class Taskmodal extends React.Component {
                                         </div>
                                     </div>
                                 }
+
                                 {/* 태그 추가 */}
                                 <div className="taskModal-content-add-tag">
-                                    <button className="tag-list-add taskModal-content-btn">
+                                    <button 
+                                        className="tag-list-add taskModal-content-btn"
+                                        onClick={() => this.openAddingTagModal()}
+                                    >
                                         <i class="fas fa-tag"></i> 태그 추가
                                     </button>
                                 </div>
+                                {
+                                    this.state.isAddingTagModalOpen == true &&
+                                    <div className="taskModal-content-add-member-modal">
+                                        <h3 className="taskModal-content-add-member-title">태그 추가하기</h3>
+                                        <div className="taskModal-content-add-member-box">
+                                            {/* {
+                                                this.props.tags.map( (member, index) => {
+                                                    
+                                                })
+                                            } */}
+                                        </div>
+                                    </div>
+                                }
+
 
                                 {/* 날짜 추가 */}
                                 <div className="taskModal-content-add-duedate">

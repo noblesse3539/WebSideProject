@@ -6,35 +6,35 @@ const initialData = {
                     content: '리액트 드래그 앤 드롭 구현하기', 
                     tag: ['orange'],
                     description: 'Is tis going to be displayed?',
-                    members: ['member-1', 'member-4'],
+                    members: ['member-1', 'member-4', 'member-5'],
                     },
         'task-2' : { 
                     id: 'task-2', 
                     content: '식사하기', 
                     tag: ['red', 'orange'],
                     description: 'How about this?',
-                    members: ['member-1', 'member-2'],
+                    members: ['member-1', 'member-2', 'member-5'],
                     },
         'task-3' : { 
                     id: 'task-3', 
                     content: '즐겁게 알고리즘 문제 풀기', 
                     tag: ['green', 'orange'],
                     description: '',
-                    members: ['member-1', 'member-2'],
+                    members: ['member-1', 'member-2', 'member-5'],
                     },   
         'task-4' : { 
                     id: 'task-4', 
                     content: '커피 한 잔 더 마시기', 
                     tag: ['hotpink', 'blue'],
                     description: '',
-                    members: ['member-1', 'member-3'],
+                    members: ['member-1', 'member-3', 'member-5'],
                     },
         'task-5' : { 
                     id: 'task-5', 
                     content: 'webengers 파이팅', 
                     tag: [],
                     description: '',
-                    members: ['member-1', 'member-3', 'member-4'],
+                    members: ['member-1', 'member-3', 'member-4', 'member-5'],
                     },
     },
     columns: {
@@ -91,6 +91,31 @@ const initialData = {
                     profileImage: 'http://cdn.shopify.com/s/files/1/0720/2413/products/7168869_grande.jpeg?v=1423545296',
                     tasks: ['task-1', 'task5'],
                 },
+                {
+                    id: 'member-5',
+                    name: 'Taki',
+                    profileImage: 'https://ca.slack-edge.com/TFR20FNTB-UFT2R09SA-gd0e53a9a9bb-512',
+                    tasks: ['task-1', 'task-2', 'task-3', 'task-4', 'task-5'],
+                },
+                {
+                    id: 'member-6',
+                    name: 'HPHK',
+                    profileImage: 'https://hphk.kr/static/black.png',
+                    tasks: [],
+                },
+                {
+                    id: 'member-7',
+                    name: 'Blue Bottle',
+                    profileImage: 'https://bluebottlecoffee.com/assets/fb-og-image-default-b0bce82fbf6759deaa8fb9b4b848783f6108edc78c42af454c1f82e7e999e093.png',
+                    tasks: [],
+                },
+                {
+                    id: 'member-8',
+                    name: 'Starbucks',
+                    profileImage: 'https://adc3ef35f321fe6e725a-fb8aac3b3bf42afe824f73b606f0aa4c.ssl.cf1.rackcdn.com/tenantlogos/5326.png',
+                    tasks: [],
+                },
+                
             ],
 }
 
