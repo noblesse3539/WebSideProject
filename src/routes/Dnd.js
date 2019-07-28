@@ -224,15 +224,17 @@ class Dnd extends React.Component {
                         ref = {provided.innerRef}
                     >
                         {this.state.columnOrder.map((columnId, index) => {
-                        const column = this.state.columns[columnId]
-                        const tasks  = column.taskIds.map(taskId => this.state.tasks[taskId])
-                        const tags   = this.state.tags
+                        const column  = this.state.columns[columnId]
+                        const tasks   = column.taskIds.map(taskId => this.state.tasks[taskId])
+                        const tags    = this.state.tags
+                        const members = this.state.members
 
                         return <Column 
                                     key={column.id} 
                                     column={column} 
                                     tasks={tasks} 
                                     tags={tags}
+                                    members={members}
                                     index={index} 
                                     addNewTask={this.addNewTask} 
                                     deleteTask={this.deleteTask}

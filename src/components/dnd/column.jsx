@@ -60,7 +60,7 @@ export default class Column extends React.Component {
         const modal = document.querySelector(`.${taskModalIndex}`)
         modal.style.display = 'none'
         // this.setState({isModalOpen : true})
-        // this.setIsModal()
+        this.setIsModal()
     }
 
     setIsModal() {
@@ -111,6 +111,7 @@ export default class Column extends React.Component {
                                             task={task}
                                             index={index}
                                             tags={this.props.tags}
+                                            members={this.props.members}
                                             column={this.props.column}
                                             deleteTask={this.props.deleteTask} 
                                             updateTaskContent={this.props.updateTaskContent}

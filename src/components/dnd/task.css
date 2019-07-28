@@ -108,5 +108,13 @@
 }
 
 .task-content-alarms {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 2px 0;
+}
+
+.taskModal-member-image-showindow {
+    width: 15px !important;
+    height: 15px !important;
 }

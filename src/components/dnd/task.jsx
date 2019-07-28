@@ -47,6 +47,8 @@ export default class Task extends React.Component {
                 // console.log(event.target.classList[0].slice(-6))
                 if (this.props.task.id == event.target.classList[0].slice(-6) ) {
                     modal.style.display = 'none'
+
+                    // isDragDisabled 관련해서 반드시 호출해줘야하는 메소드입니다!
                     this.props.setIsModal()
                 }
             } 
@@ -55,6 +57,7 @@ export default class Task extends React.Component {
                 // console.log(event.target)
                 // console.log(this.props.task.id)
                 modal.style.display = 'none'
+                this.props.setIsModal()
             }
         })
     }
@@ -76,6 +79,17 @@ export default class Task extends React.Component {
 
     render() {
         const newContent = ''
+        const taskMembers = []
+
+        if (this.props.task.members) {
+            this.props.task.members.map( (taskMember, index) => {
+                this.props.members.filter( (member, index) => {
+                    if (member.id == taskMember) {
+                        taskMembers.push(member)
+                    }
+                })
+            })
+        }
 
         return (
             <Draggable 
@@ -117,7 +131,29 @@ export default class Task extends React.Component {
                             </button> */}
                         </div>
                         <div className="task-content-alarms">
-                            { this.props.task.description ? <i class="far fa-file-alt"></i> : ''}
+                            <div>
+                                { this.props.task.description ? <i class="far fa-file-alt"></i> : ''}
+                            </div>
+                            <div>
+                                <div className="taskModal-members-list">
+                                            {
+                                                taskMembers.map( (member, index) => {
+                                                    return (
+                                                        <div 
+                                                            key={index}
+                                                            className={`taskModal-member-${member.name} taskModal-member-image-box taskModal-member-image-showindow`}
+                                                        >
+                                                            <img 
+                                                                className="taskModal-member-image " 
+                                                                src={member.profileImage} 
+                                                                alt="Each member's beautiful face"
+                                                            />
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                </div>
+                            </div>
                         </div>
                         <Taskmodal
 
@@ -125,6 +161,7 @@ export default class Task extends React.Component {
                             column={this.props.column}
                             index={this.props.index}
                             tags={this.props.tags}
+                            members={this.props.members}
                             updateTaskContent={this.props.updateTaskContent}
                             updateTaskDescription={this.props.updateTaskDescription}
                             newContent={this.state.newContent}

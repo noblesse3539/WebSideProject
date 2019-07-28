@@ -34,6 +34,18 @@ export default class Taskmodal extends React.Component {
 
     render() {
 
+        const taskMembers = []
+
+        if (this.props.task.members) {
+            this.props.task.members.map( (taskMember, index) => {
+                this.props.members.filter( (member, index) => {
+                    if (member.id == taskMember) {
+                        taskMembers.push(member)
+                    }
+                })
+            })
+        }
+
         return (
             <div className="taskmodal">
                 <div className={`taskModal taskModal-${this.props.task.id}`}>
@@ -73,6 +85,25 @@ export default class Taskmodal extends React.Component {
                                 <h3 className="taskModal-contentTitle">현재 컬럼: <u><i>{this.props.column.title}</i></u></h3>
                                 <div className="taskModal-members">
                                     <h3>멤버 목록</h3>
+                                    <div className="taskModal-members-list">
+                                        {
+                                            taskMembers.map( (member, index) => {
+                                                return (
+                                                    <div 
+                                                        key={index}
+                                                        className={`taskModal-member-${member.name} taskModal-member-image-box`}
+                                                    >
+                                                        <img 
+                                                            className="taskModal-member-image" 
+                                                            src={member.profileImage} 
+                                                            alt="Each member's beautiful face"
+                                                        />
+                                                        <span class="taskModal-member-name">{member.name}</span>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
                                 </div>
                                 <div className="tagList-box">   
                                     <h3 className="tag-list-title">태그 목록</h3>
@@ -80,7 +111,7 @@ export default class Taskmodal extends React.Component {
                                         <div className="tag-list">
                                             {this.props.task.tag.map((tag, index) => {
                                                 return (
-                                                    <div className={`tag-for-${index} tag-each`} style={this.tagStyle(tag)}>
+                                                    <div className={`tag-for-${index} tag-each`} style={this.tagStyle(tag)} key={index}>
                                                         <p className="tag-content">#{this.props.tags[tag].content}</p>
                                                     </div>
                                                 )
@@ -88,10 +119,6 @@ export default class Taskmodal extends React.Component {
                                             }
                                         </div>
                                     </div>
-                                    {/* <ul className="tag-list">
-                                    <li className={`tag-${}`}>     
-                                    </li>
-                                </ul> */}
                                 </div>
                                 <div className="taskModal-description">
                                     <h3 className="taskModal-description-title">
