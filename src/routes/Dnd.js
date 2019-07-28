@@ -17,9 +17,36 @@ class Dnd extends React.Component {
     state = initialData
     counter = 5 // addNewTask 메서드용 임시 변수 (현재 전체 task의 개수)
 
-    updateTaskContent = (taskId, taskIndex, columnId, newContent, e, key) => {
+    updateTaskDescription = (taskId, columnId, newDescription, target, event) => {
         
-        const toUnFocus = document.querySelector(`#${taskId}`)
+        const toUnFocus = document.querySelector(`.${target}`)
+        if (event.key == 'Enter') {
+            toUnFocus.blur()
+        }
+
+        const newTaskContent = {
+            ...this.state.tasks,
+            [taskId] : {
+                ...this.state.tasks[taskId],
+                description: newDescription
+            }
+        }
+
+        const newState = {
+            ...this.state,
+            tasks : newTaskContent
+        }
+
+        this.setState(newState)
+
+    }
+
+    updateTaskContent = (taskId, taskIndex, columnId, newContent, target, event) => {
+        
+        const toUnFocus = document.querySelector(`.${target}`)
+        if (event.key == 'Enter') {
+            toUnFocus.blur()
+        }
 
         const newTaskContent = {
             ...this.state.tasks,
@@ -35,16 +62,14 @@ class Dnd extends React.Component {
         }
 
         this.setState(newState, () => {
-            // toUnFocus.blur()
-        })
+            }
+        )
 
         return
     }
 
     // By MozziCheek
     deleteTask = (taskId, taskIndex, columnId) => {
-
-        console.log(taskId, taskIndex, columnId)
         
         const newTaskIds = Array.from(this.state.columns[columnId].taskIds)
         newTaskIds.splice(taskIndex, 1)
@@ -74,7 +99,6 @@ class Dnd extends React.Component {
         const lastTaskId = this.counter
         
         const newTaskId  = 'task-' + parseInt(lastTaskId+1)
-        console.log(newTaskId)
         
         const newTasks = Array.from(this.state.columns[columnId].taskIds)
         newTasks.splice(-1, 0, newTaskId)
@@ -91,7 +115,7 @@ class Dnd extends React.Component {
             ...this.state,
                 tasks : {
                     ...this.state.tasks,
-                    [newTaskId] : { id: newTaskId, content: '추가되는가?', tag: []},
+                    [newTaskId] : { id: newTaskId, content: '추가되는가?', tag: [], description: '',},
                 },
                 columns: {
                     ...this.state.columns,
@@ -203,15 +227,19 @@ class Dnd extends React.Component {
                         const tasks  = column.taskIds.map(taskId => this.state.tasks[taskId])
                         const tags   = this.state.tags
 
-                        return <Column key={column.id} column={column} tasks={tasks} tags={tags}
-                                index={index} addNewTask={this.addNewTask} deleteTask={this.deleteTask}
-                                updateTaskContent={this.updateTaskContent}
+                        return <Column 
+                                    key={column.id} 
+                                    column={column} 
+                                    tasks={tasks} 
+                                    tags={tags}
+                                    index={index} 
+                                    addNewTask={this.addNewTask} 
+                                    deleteTask={this.deleteTask}
+                                    updateTaskContent={this.updateTaskContent}
+                                    updateTaskDescription={this.updateTaskDescription}
                                 />
                         })}
                         {provided.placeholder}
-
-                        
-
                     </Container>
                 )}
             </Droppable>

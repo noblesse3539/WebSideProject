@@ -114,6 +114,7 @@ export default class Column extends React.Component {
                                             column={this.props.column}
                                             deleteTask={this.props.deleteTask} 
                                             updateTaskContent={this.props.updateTaskContent}
+                                            updateTaskDescription={this.props.updateTaskDescription}
                                             openModal={this.openModal}
                                             closeModal={this.closeModal}
                                             setIsModal={this.setIsModal}

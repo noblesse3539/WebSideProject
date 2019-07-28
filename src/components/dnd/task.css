@@ -92,7 +92,7 @@
 }
 
 .red {
-    background: hotpink;
+    background: red;
 }
 
 .green {
@@ -100,5 +100,13 @@
 }
 
 .blue {
-    background: skyblue;
+    background: blue;
+}
+
+.hotpink {
+    background: hotpink;
+}
+
+.task-content-alarms {
+    margin: 2px 0;
 }

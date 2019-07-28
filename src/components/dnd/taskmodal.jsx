@@ -6,8 +6,10 @@ export default class Taskmodal extends React.Component {
     constructor(props) {
         super(props)
         this.clearInputValue = this.clearInputValue.bind(this)
+        this.handleChange    = this.handleChange.bind(this)
         this.state = {
-            inputDefaultValue : this.props.task.content
+            inputDefaultValue : this.props.task.content,
+            descriptionInputValue : this.props.task.description,
         }
     }
 
@@ -23,6 +25,13 @@ export default class Taskmodal extends React.Component {
         }
     }
 
+    handleChange(event) {
+        this.setState({
+            ...this.state,
+            descriptionInputValue : event.target.value,
+        })
+    }
+
     render() {
 
         return (
@@ -33,16 +42,18 @@ export default class Taskmodal extends React.Component {
                         {/* 제목 및 닫기 버튼 */}
                         <div className="taskModal-title">
                             <input
-                                className="taskModal-titleInput"
+                                className={`taskModal-titleInput taskModal-titleInput-${this.props.task.id}`}
                                 onChange={this.props.handleChange} type="text"
                                 placeholder={this.state.inputDefaultValue}
                                 // 추후 default value를 DB에서 가져오는 방식으로 수정할 것!
                                 onClick={this.clearInputValue}
-                                onKeyDown={() => this.props.updateTaskContent(
+                                onKeyDown={(event) => this.props.updateTaskContent(
                                     this.props.task.id,
                                     this.props.index,
                                     this.props.column.id,
-                                    this.props.newContent
+                                    this.props.newContent,
+                                    `taskModal-titleInput-${this.props.task.id}`,
+                                    event,
                                 )}
                             />
                             {/* <div className="taskModalClose" onClick={() => this.props.closeModal(`taskModal-${this.props.task.id}`)}>&times;</div> */}
@@ -79,12 +90,31 @@ export default class Taskmodal extends React.Component {
                             </div>
                             <div className="taskModal-description">
                                 <h3 className="taskModal-description-title">상세 설명</h3>
-                                <textarea className="taskModal-textarea" name="" id="" cols="30" rows="10"></textarea>
+                                <textarea 
+                                    className={`taskModal-textarea taskModal-textarea-${this.props.task.id}`}
+                                    name="" 
+                                    id="" 
+                                    cols="30" 
+                                    rows="10"
+                                    value={this.state.descriptionInputValue}
+                                    // defaultValue={this.state.descriptionInputValue}
+                                    onChange={this.handleChange}
+                                    onKeyDown={(event) => this.props.updateTaskDescription(
+                                        this.props.task.id,
+                                        this.props.column.id,
+                                        this.state.descriptionInputValue,
+                                        `taskModal-textarea-${this.props.task.id}`,
+                                        event,
+                                    )}
+                                >
+                                
+                                </textarea>
                             </div>
                         </div>
 
                         {/* Task 세부 내용 */}
-                        <div className="taskModal-option"></div>
+                        <div className="taskModal-option">
+                        </div>
                     </div>
                 </div>
             </div>

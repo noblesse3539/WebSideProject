@@ -94,7 +94,7 @@ export default class Task extends React.Component {
                         onClick={ () => this.props.openModal(`taskModal-${this.props.task.id}`)}
                       >
                         <div className="tags">
-                            <ul className="tagList">
+                            <ul className="tagList">    
                                 {
                                     this.tags.map( tag => {
                                         return <li className={tag}></li>
@@ -106,16 +106,21 @@ export default class Task extends React.Component {
                             {this.props.task.content}
                             {/* <button className="deleteTask" onClick={() =>
                                 this.props.deleteTask(this.props.task.id, this.props.index, this.props.column.id)}
-                            >
+                                >
                                 &#10006;
                             </button> */}
                         </div>
+                        <div className="task-content-alarms">
+                            { this.props.task.description ? <i class="far fa-file-alt"></i> : ''}
+                        </div>
                         <Taskmodal
+
                             task={this.props.task}
                             column={this.props.column}
                             index={this.props.index}
                             tags={this.props.tags}
                             updateTaskContent={this.props.updateTaskContent}
+                            updateTaskDescription={this.props.updateTaskDescription}
                             newContent={this.state.newContent}
                             handleChange={this.handleChange}
                             closeModal={this.props.closeModal}
