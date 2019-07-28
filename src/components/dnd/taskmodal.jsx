@@ -7,9 +7,11 @@ export default class Taskmodal extends React.Component {
         super(props)
         this.clearInputValue = this.clearInputValue.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.openAddingMemberModal = this.openAddingMemberModal.bind(this)
         this.state = {
             inputDefaultValue: this.props.task.content,
             descriptionInputValue: this.props.task.description,
+            isAddingMemberModalOpen : false,
         }
     }
 
@@ -32,10 +34,25 @@ export default class Taskmodal extends React.Component {
         })
     }
 
+    openAddingMemberModal() {
+
+        if (this.state.isAddingMemberModalOpen == false) {
+            this.setState({
+                ...this.state,
+                isAddingMemberModalOpen : true
+            })
+        } else {
+            this.setState({
+                ...this.state,
+                isAddingMemberModalOpen : false
+            })
+        }
+    }
+
     render() {
 
         const taskMembers = []
-
+        
         if (this.props.task.members) {
             this.props.task.members.map( (taskMember, index) => {
                 this.props.members.filter( (member, index) => {
@@ -145,21 +162,98 @@ export default class Taskmodal extends React.Component {
                                 </div>
                             </div>
                             <div className="taskModal-content-right">
+
+                                {/* 멤버 추가 */}
                                 <div className="taskModal-content-add-member">
-                                    <button className="taskModal-content-btn">
+                                    <button 
+                                        className="taskModal-content-btn"
+                                        onClick={() => this.openAddingMemberModal()}
+                                    >
                                         <i class="fas fa-user"></i> 멤버 추가
                                     </button>
                                 </div>
+
+                                {/* 멤버 추가 모달 버튼을 이런식으로 inline 조건문을 사용하면 편하게 띄울 수 있어요! */}
+                                {
+                                    this.state.isAddingMemberModalOpen == true &&
+                                    <div className="taskModal-content-add-member-modal">
+                                        <h3 className="taskModal-content-add-member-title">멤버 추가하기</h3>
+                                        <div className="taskModal-content-add-member-box">
+                                            {
+                                                this.props.members.map( (member, index) => {
+
+                                                    let taskMemberStatus
+                                                    let taskMemberStatusStyle
+
+                                                    if (this.props.task.members) {
+                                                        const targetIndex = this.props.task.members.indexOf(member.id)
+                                                     
+                                                        if (targetIndex == -1) {
+                                                            taskMemberStatus = <i class="far fa-plus-square"></i>
+                                                            taskMemberStatusStyle = {
+                                                                
+                                                            }
+                                                        } else {
+                                                            taskMemberStatus = <i class="far fa-check-square"></i>
+                                                            taskMemberStatusStyle = {
+                                                                color: 'green',
+                                                            }
+                                                        }
+
+                                                    } else {
+                                                        taskMemberStatus = <i class="far fa-plus-square"></i>
+                                                        taskMemberStatusStyle = {}
+                                                    }
+
+                                                    // 현재 task member에 없는 member는 인덱스가 -1로 출력됩니다.
+                                                    return (
+                                                        <div 
+                                                            key={index}
+                                                            className={`taskModal-member-add-box-${index} taskModal-member-add-box`}
+                                                            onClick={() => this.props.updateTaskMembers(
+                                                                                                    this.props.task.id,
+                                                                                                    this.props.column.id,
+                                                                                                    member.id,
+                                                            )}
+                                                        >
+                                                            <div
+                                                                key={index}
+                                                                className={`taskModal-member-${member.name} taskModal-member-image-box taskModal-content-add-member-image-box`}
+                                                            >
+                                                                <img 
+                                                                    className="taskModal-member-image taskModal-content-add-member-image" 
+                                                                    src={member.profileImage} 
+                                                                    alt="Each member's beautiful face"
+                                                                />
+                                                            </div>
+                                                            <p className="taskModal-content-add-member-name">
+                                                                {member.name}
+                                                            </p>
+                                                            <div className="taskModal-content-add-btn" style={taskMemberStatusStyle}>
+                                                                {taskMemberStatus}
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                                {/* 태그 추가 */}
                                 <div className="taskModal-content-add-tag">
                                     <button className="tag-list-add taskModal-content-btn">
                                         <i class="fas fa-tag"></i> 태그 추가
                                     </button>
                                 </div>
+
+                                {/* 날짜 추가 */}
                                 <div className="taskModal-content-add-duedate">
                                     <button className="taskModal-content-btn">
                                         <i class="fas fa-clock"></i> 날짜 추가
                                     </button>
                                 </div>
+
+                                {/* 보관하기 */}
                                 <div className="taskModal-content-add-delete">
                                     <button className="taskModal-content-btn taskModal-content-store">
                                         <i class="fas fa-box-open"></i> 보관하기

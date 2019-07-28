@@ -164,6 +164,7 @@ export default class Task extends React.Component {
                             members={this.props.members}
                             updateTaskContent={this.props.updateTaskContent}
                             updateTaskDescription={this.props.updateTaskDescription}
+                            updateTaskMembers={this.props.updateTaskMembers}
                             newContent={this.state.newContent}
                             handleChange={this.handleChange}
                             closeModal={this.props.closeModal}

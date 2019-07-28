@@ -17,6 +17,63 @@ class Dnd extends React.Component {
     state = initialData
     counter = 5 // addNewTask 메서드용 임시 변수 (현재 전체 task의 개수)
 
+    // 현재 task에 해당 멤버가 존재하면 삭제, 그렇지 않을 경우 추가!
+    updateTaskMembers = (taskId, columnId, newMember, event) => {
+        
+        let isThisNewTask = false
+        let targetIndex
+
+        if (this.state.tasks[taskId].members) {
+            isThisNewTask = false
+            targetIndex = this.state.tasks[taskId].members.indexOf(newMember)
+        } else {
+            isThisNewTask = true
+        }
+        
+        const findMember  = function(member) {
+            return member == newMember
+        }
+
+        let newTasks
+
+        // 삭제하기
+        if (isThisNewTask == false && this.state.tasks[taskId].members.find(findMember)) {
+            
+            const newMembersArr = this.state.tasks[taskId].members
+            if (targetIndex != -1) {
+                newMembersArr.splice(targetIndex, 1)
+            } else {
+                newMembersArr.splice(0, 1)
+            }
+
+            newTasks = {
+                ...this.state.tasks,
+                [taskId] : {
+                    ...this.state.tasks[taskId],
+                    members: newMembersArr
+                }
+            }
+
+        // 추가하기
+        } else {
+            newTasks = {
+                ...this.state.tasks,
+                [taskId] : {
+                    ...this.state.tasks[taskId],
+                    members: this.state.tasks[taskId].members ? [...this.state.tasks[taskId].members, newMember] : [newMember]
+                }
+            }
+            
+        }
+        
+        const newState = {
+            ...this.state,
+            tasks: newTasks
+        }
+        
+        this.setState(newState)
+    }
+
     updateTaskDescription = (taskId, columnId, newDescription, target, event) => {
         
         const toUnFocus = document.querySelector(`.${target}`)
@@ -240,6 +297,7 @@ class Dnd extends React.Component {
                                     deleteTask={this.deleteTask}
                                     updateTaskContent={this.updateTaskContent}
                                     updateTaskDescription={this.updateTaskDescription}
+                                    updateTaskMembers={this.updateTaskMembers}
                                 />
                         })}
                         {provided.placeholder}
