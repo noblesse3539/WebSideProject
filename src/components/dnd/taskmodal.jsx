@@ -6,10 +6,10 @@ export default class Taskmodal extends React.Component {
     constructor(props) {
         super(props)
         this.clearInputValue = this.clearInputValue.bind(this)
-        this.handleChange    = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
         this.state = {
-            inputDefaultValue : this.props.task.content,
-            descriptionInputValue : this.props.task.description,
+            inputDefaultValue: this.props.task.content,
+            descriptionInputValue: this.props.task.description,
         }
     }
 
@@ -28,7 +28,7 @@ export default class Taskmodal extends React.Component {
     handleChange(event) {
         this.setState({
             ...this.state,
-            descriptionInputValue : event.target.value,
+            descriptionInputValue: event.target.value,
         })
     }
 
@@ -57,8 +57,9 @@ export default class Taskmodal extends React.Component {
                                 )}
                             />
                             {/* <div className="taskModalClose" onClick={() => this.props.closeModal(`taskModal-${this.props.task.id}`)}>&times;</div> */}
-                            <div className="taskModal-closeBtn"
-                                onClick={() => this.props.closeModal(`.taskModal-${this.props.task.id}`)}
+                            <div 
+                                className="taskModal-closeBtn"
+                                onClick={ () => this.props.closeModal(`taskModal-${this.props.task.id}`)}
                             >
                                 <div className={`taskModal-closeBtn-wrapper-${this.props.task.id} taskModal-closeBtn-wrapper`}>
                                     &#10006;
@@ -66,49 +67,72 @@ export default class Taskmodal extends React.Component {
                             </div>
                         </div>
 
-                        {/* 태그 리스트 */}
+                        {/* 모달 컨텐츠 */}
                         <div className="taskModal-content">
-                            <h3 className="taskModal-contentTitle">현재 컬럼: <u><i>{this.props.column.title}</i></u></h3>
-                            <div className="tagList-box">
-                                <h3 className="tag-list-title">태그 목록</h3>
-                                <div className="tag-list-body">
-                                    <div className="tag-list">
-                                        { this.props.task.tag.map( (tag, index) => {
-                                            return (
-                                                <div className={`tag-for-${index} tag-each`} style={this.tagStyle(tag)}>
-                                                    <p className="tag-content">#{this.props.tags[tag].content}</p>
-                                                </div>
-                                            )})
-                                        }
+                            <div className="taskModal-content-left">
+                                <h3 className="taskModal-contentTitle">현재 컬럼: <u><i>{this.props.column.title}</i></u></h3>
+                                <div className="taskModal-members">
+                                    <h3>멤버 목록</h3>
+                                </div>
+                                <div className="tagList-box">   
+                                    <h3 className="tag-list-title">태그 목록</h3>
+                                    <div className="tag-list-body">
+                                        <div className="tag-list">
+                                            {this.props.task.tag.map((tag, index) => {
+                                                return (
+                                                    <div className={`tag-for-${index} tag-each`} style={this.tagStyle(tag)}>
+                                                        <p className="tag-content">#{this.props.tags[tag].content}</p>
+                                                    </div>
+                                                )
+                                            })
+                                            }
+                                        </div>
                                     </div>
-                                    <button className="tag-list-add">태그 추가</button>
-                                </div>  
-                                {/* <ul className="tag-list">
+                                    {/* <ul className="tag-list">
                                     <li className={`tag-${}`}>     
                                     </li>
                                 </ul> */}
+                                </div>
+                                <div className="taskModal-description">
+                                    <h3 className="taskModal-description-title">
+                                        <i class="far fa-file-alt"></i> 상세 설명
+                                </h3>
+                                    <textarea
+                                        className={`taskModal-textarea taskModal-textarea-${this.props.task.id}`}
+                                        name=""
+                                        id=""
+                                        cols="30"
+                                        rows="10"
+                                        value={this.state.descriptionInputValue}
+                                        // defaultValue={this.state.descriptionInputValue}
+                                        onChange={this.handleChange}
+                                        onKeyDown={(event) => this.props.updateTaskDescription(
+                                            this.props.task.id,
+                                            this.props.column.id,
+                                            this.state.descriptionInputValue,
+                                            `taskModal-textarea-${this.props.task.id}`,
+                                            event,
+                                        )}
+                                    >
+                                    </textarea>
+                                </div>
                             </div>
-                            <div className="taskModal-description">
-                                <h3 className="taskModal-description-title">상세 설명</h3>
-                                <textarea 
-                                    className={`taskModal-textarea taskModal-textarea-${this.props.task.id}`}
-                                    name="" 
-                                    id="" 
-                                    cols="30" 
-                                    rows="10"
-                                    value={this.state.descriptionInputValue}
-                                    // defaultValue={this.state.descriptionInputValue}
-                                    onChange={this.handleChange}
-                                    onKeyDown={(event) => this.props.updateTaskDescription(
-                                        this.props.task.id,
-                                        this.props.column.id,
-                                        this.state.descriptionInputValue,
-                                        `taskModal-textarea-${this.props.task.id}`,
-                                        event,
-                                    )}
-                                >
-                                
-                                </textarea>
+                            <div className="taskModal-content-right">
+                                <div className="taskModal-content-add-member">
+                                    <button className="taskModal-content-btn">
+                                        <i class="fas fa-user"></i> 멤버 추가
+                                    </button>
+                                </div>
+                                <div className="taskModal-content-add-tag">
+                                    <button className="tag-list-add taskModal-content-btn">
+                                        <i class="fas fa-tag"></i> 태그 추가
+                                    </button>
+                                </div>
+                                <div className="taskModal-content-add-duedate">
+                                    <button className="taskModal-content-btn">
+                                        <i class="fas fa-clock"></i> 날짜 추가
+                                    </button>
+                                </div>
                             </div>
                         </div>
 

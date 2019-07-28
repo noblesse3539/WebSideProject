@@ -37,17 +37,24 @@ export default class Task extends React.Component {
 
     componentDidMount() { 
         window.addEventListener('click', (event) => {
+            
             const modal = document.querySelector(`.taskModal-${this.props.task.id}`)
             const modalCloseBtn = document.querySelector(".taskModal-closeBtn")
-            // modal을 띄우는 순간 window전체가 (.taskModal)이므로
-            // target이 modal인 경우 모달이 꺼지게 만들면 된다.
-            event.preventDefault()
-            event.stopPropagation()
+            if (this.props.task.id == event.target.classList[0].slice(-6)) {
+                // modal을 띄우는 순간 window전체가 (.taskModal)이므로
+                // target이 modal인 경우 모달이 꺼지게 만들면 된다.
+                // console.log(event.target)
+                // console.log(event.target.classList[0].slice(-6))
+                if (event.target.classList[0] == `taskModal-closeBtn-wrapper-${this.props.task.id}`) {
+                    modal.style.display = 'none'
+                    this.props.setIsModal()
+                }
+            } 
 
-            console.log(event.target.classList[0])
-            if (event.target == modal || event.target.classList[0] == 'taskModal-closeBtn-wrapper') {
+            if (event.target == modal) {
+                // console.log(event.target)
+                // console.log(this.props.task.id)
                 modal.style.display = 'none'
-                this.props.setIsModal()
             }
         })
     }
@@ -58,8 +65,7 @@ export default class Task extends React.Component {
             const modalCloseBtn = document.querySelector(".taskModal-closeBtn")
             // modal을 띄우는 순간 window전체가 (.taskModal)이므로
             // target이 modal인 경우 모달이 꺼지게 만들면 된다.
-            console.log(event.target.classList[0])
-            if (event.target == modal || event.target.classList[0] == 'taskModal-closeBtn-wrapper') {
+            if (event.target == modal || event.target.classList[0] == `taskModal-closeBtn-wrapper-${this.props.task.id}`) {
                 modal.style.display = 'none'
                 this.props.setIsModal()
             }
