@@ -40,12 +40,12 @@ export default class Task extends React.Component {
             
             const modal = document.querySelector(`.taskModal-${this.props.task.id}`)
             const modalCloseBtn = document.querySelector(".taskModal-closeBtn")
-            if (this.props.task.id == event.target.classList[0].slice(-6)) {
+            if (event.target.classList[0] == `taskModal-closeBtn-wrapper-${this.props.task.id}`) {
                 // modal을 띄우는 순간 window전체가 (.taskModal)이므로
                 // target이 modal인 경우 모달이 꺼지게 만들면 된다.
                 // console.log(event.target)
                 // console.log(event.target.classList[0].slice(-6))
-                if (event.target.classList[0] == `taskModal-closeBtn-wrapper-${this.props.task.id}`) {
+                if (this.props.task.id == event.target.classList[0].slice(-6) ) {
                     modal.style.display = 'none'
                     this.props.setIsModal()
                 }
