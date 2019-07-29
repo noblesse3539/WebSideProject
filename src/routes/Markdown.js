@@ -1,6 +1,6 @@
 import React from 'react';
 import MarkDownSlate from '../components/useslate/MarkDownSlate'
-
+import SignInBtn from '../components/googleOAuth/SignInBtn'
 export default class Markdown extends React.Component {
     state = {
         text: ""
@@ -25,16 +25,19 @@ export default class Markdown extends React.Component {
     }
     render() {
         return (
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: "end",
-                }}
-            >
-                <h1>Markdown Editor</h1>
-                
-                <div id="show">{this.state.text}</div>
-                <MarkDownSlate/>
+            <div>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: "end",
+                    }}
+                >
+                    <h1>Markdown Editor</h1>
+                    
+                    <div id="show">{this.state.text}</div>
+                    <MarkDownSlate/>
+                </div>
+                <div><SignInBtn/></div>
             </div>
         );
     }

@@ -1,10 +1,18 @@
 import React from 'react';
+import queryString from 'query-string'
+
 import TopNav from 'components/navbar/TopNav'
 import Footer from 'components/footer/Footer'
-
 import './Home.scss'
 
 export default class Home extends React.Component {
+    componentWillMount() {
+        const query = queryString.parse(this.props.location.search)
+        if(query.token) {
+            window.localStorage.setItem('jwt', query.token)
+            this.props.history.push('/')
+        }
+    }
     render() {
         return (
             <div>
